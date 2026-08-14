@@ -30,8 +30,6 @@
         <nav class="nav" aria-label="Navegación principal">
           <a href="#inicio">Inicio</a>
           <a href="#proyectos">Proyectos</a>
-          <a href="/plugins">Plugins</a>
-          <a href="/ca-tier-calculator">Calculadora</a>
           <a href="https://github.com/PaJauKat" target="_blank" rel="noreferrer">GitHub</a>
         </nav>
       </header>
@@ -39,9 +37,9 @@
       <main id="inicio" class="hero">
         <div class="hero-copy">
           <p class="eyebrow">Personal brand</p>
-          <h1>Un alias con identidad, técnica y estilo.</h1>
+          <h1>Crear cosas con criterio. Cuidar cada detalle.</h1>
           <p class="subtitle">
-            Pajau es mi nombre de marca personal: un espacio para proyectos, herramientas, ideas y trabajo creativo.
+            Pajau es mi alias personal: un espacio para proyectos, herramientas y ideas que valen la pena construir bien.
           </p>
 
           <div class="actions">
@@ -61,26 +59,35 @@
       <section id="proyectos" class="projects">
         <div class="section-header">
           <p class="section-kicker">Proyectos</p>
-          <h2>Construcción con criterio.</h2>
+          <h2>Un portfolio de trabajo con identidad.</h2>
         </div>
 
         <div class="project-grid">
-          <a href="/ca-tier-calculator" class="project-card card-featured">
-            <span class="card-tag">Herramienta</span>
+          <a href="/ca-tier-calculator" class="project-card project-card--featured">
+            <div class="card-topline">
+              <span class="card-tag">Herramienta</span>
+              <span class="card-arrow">↗</span>
+            </div>
             <h3>Calculadora CA</h3>
-            <p>Proyecto práctico para ordenar, comparar y visualizar ideas de forma clara.</p>
+            <p>Proyecto práctico para ordenar, comparar y visualizar ideas de forma clara y útil.</p>
           </a>
 
           <a href="/plugins" class="project-card">
-            <span class="card-tag">Utilidades</span>
+            <div class="card-topline">
+              <span class="card-tag">Utilidades</span>
+              <span class="card-arrow">↗</span>
+            </div>
             <h3>Plugins</h3>
-            <p>Pequeños recursos pensados para hacer la experiencia más útil y cómoda.</p>
+            <p>Pequeños recursos pensados para mejorar la experiencia y simplificar tareas.</p>
           </a>
 
           <article class="project-card">
-            <span class="card-tag">Futuro</span>
+            <div class="card-topline">
+              <span class="card-tag">Futuro</span>
+              <span class="card-arrow">→</span>
+            </div>
             <h3>Más proyectos</h3>
-            <p>La base está preparada para crecer con nuevas cosas, sin perder el enfoque premium.</p>
+            <p>La base está diseñada para crecer con nuevos lanzamientos sin saturar la navegación.</p>
           </article>
         </div>
       </section>
@@ -182,41 +189,44 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 18px;
+    gap: 16px;
     color: var(--muted);
-    font-size: 0.9rem;
+    font-size: 0.86rem;
+    letter-spacing: 0.02em;
   }
 
   .nav a {
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, opacity 0.2s ease;
+    opacity: 0.9;
   }
 
   .nav a:hover {
     color: var(--text);
+    opacity: 1;
   }
 
   .hero {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 44px;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 42px;
     align-items: center;
-    padding: 64px 0 52px;
+    padding: 72px 0 42px;
   }
 
   .eyebrow,
   .section-kicker {
     margin: 0 0 18px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.72rem;
+    letter-spacing: 0.13em;
+    font-size: 0.7rem;
     color: var(--muted);
   }
 
   h1 {
     margin: 0;
-    font-size: clamp(2.8rem, 5.5vw, 5rem);
-    line-height: 0.96;
-    letter-spacing: -0.06em;
+    font-size: clamp(2.8rem, 5vw, 5.3rem);
+    line-height: 0.94;
+    letter-spacing: -0.07em;
     font-weight: 700;
     max-width: 700px;
   }
@@ -233,7 +243,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
-    margin-top: 30px;
+    margin-top: 32px;
   }
 
   .button {
@@ -245,7 +255,7 @@
     border-radius: 999px;
     border: 1px solid var(--line);
     font-weight: 600;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   }
 
   .button:hover {
@@ -254,8 +264,9 @@
   }
 
   .button.primary {
-    background: #f2f5f9;
-    color: #0d1117;
+    background: linear-gradient(180deg, #f6f9fd 0%, #dde5ee 100%);
+    color: #0b1015;
+    box-shadow: 0 20px 30px rgba(255, 255, 255, 0.08);
   }
 
   .button.secondary {
@@ -264,7 +275,7 @@
   }
 
   .button.ghost {
-    background: var(--ghost);
+    background: rgba(255, 255, 255, 0.02);
     color: var(--soft);
   }
 
@@ -276,7 +287,7 @@
   .image-frame {
     position: relative;
     width: min(100%, 420px);
-    border-radius: 26px;
+    border-radius: 28px;
     overflow: hidden;
     border: 1px solid var(--line);
     background: var(--panel-soft);
@@ -308,7 +319,7 @@
 
   .section-header h2 {
     margin: 0;
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-size: clamp(1.9rem, 3vw, 2.8rem);
     letter-spacing: -0.05em;
   }
 
@@ -320,35 +331,49 @@
 
   .project-card {
     display: block;
-    padding: 24px 20px;
-    background: linear-gradient(180deg, var(--panel-soft), rgba(10, 13, 18, 0.9));
+    padding: 22px 20px 20px;
+    background: linear-gradient(180deg, rgba(20, 25, 33, 0.88), rgba(9, 12, 17, 0.9));
     border: 1px solid var(--line);
-    border-radius: 22px;
+    border-radius: 24px;
     box-shadow: var(--shadow);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
   .project-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 26px 42px rgba(0, 0, 0, 0.32);
   }
 
-  .card-featured {
-    background: linear-gradient(180deg, rgba(25, 30, 39, 0.95), rgba(12, 15, 20, 0.9));
+  .project-card--featured {
+    background: linear-gradient(180deg, rgba(29, 36, 46, 0.94), rgba(11, 14, 19, 0.92));
+  }
+
+  .card-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
   }
 
   .card-tag {
     display: inline-block;
-    margin-bottom: 14px;
     color: var(--muted);
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+  }
+
+  .card-arrow {
+    color: var(--soft);
+    font-size: 1.05rem;
+    opacity: 0.9;
   }
 
   .project-card h3 {
     margin: 0 0 10px;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     letter-spacing: -0.04em;
   }
 
