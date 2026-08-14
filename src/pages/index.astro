@@ -1,18 +1,386 @@
 ---
-// Aquí va código JS si lo necesitas más adelante
 ---
 
 <html lang="es">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Pajau es un alias personal y un portafolio de proyectos, herramientas y trabajo creativo."
+    />
     <title>Pajau</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Bienvenido a pajau.cl</h1>
-    <nav>
-      <a href="/plugins">Plugins</a> | 
-      <a href="/ca-tier-calculator">Calculadora CA</a> | 
-      <a href="/rch">Discord</a>
-    </nav>
+    <div class="backdrop"></div>
+
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <img src="/logo.png" alt="Logo de Pajau" class="brand-logo" />
+          <span class="brand-name">Pajau</span>
+        </div>
+
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="#inicio">Inicio</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="/plugins">Plugins</a>
+          <a href="/ca-tier-calculator">Calculadora</a>
+          <a href="https://github.com/PaJauKat" target="_blank" rel="noreferrer">GitHub</a>
+        </nav>
+      </header>
+
+      <main id="inicio" class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Personal brand</p>
+          <h1>Un alias con identidad, técnica y estilo.</h1>
+          <p class="subtitle">
+            Pajau es mi nombre de marca personal: un espacio para proyectos, herramientas, ideas y trabajo creativo.
+          </p>
+
+          <div class="actions">
+            <a href="/plugins" class="button primary">Ver proyectos</a>
+            <a href="/ca-tier-calculator" class="button secondary">Calculadora CA</a>
+            <a href="https://github.com/PaJauKat" class="button ghost" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="image-frame">
+            <img src="/katarina2.jpg" alt="Imagen estética inspirada en Katarina" />
+          </div>
+        </div>
+      </main>
+
+      <section id="proyectos" class="projects">
+        <div class="section-header">
+          <p class="section-kicker">Proyectos</p>
+          <h2>Construcción con criterio.</h2>
+        </div>
+
+        <div class="project-grid">
+          <a href="/ca-tier-calculator" class="project-card card-featured">
+            <span class="card-tag">Herramienta</span>
+            <h3>Calculadora CA</h3>
+            <p>Proyecto práctico para ordenar, comparar y visualizar ideas de forma clara.</p>
+          </a>
+
+          <a href="/plugins" class="project-card">
+            <span class="card-tag">Utilidades</span>
+            <h3>Plugins</h3>
+            <p>Pequeños recursos pensados para hacer la experiencia más útil y cómoda.</p>
+          </a>
+
+          <article class="project-card">
+            <span class="card-tag">Futuro</span>
+            <h3>Más proyectos</h3>
+            <p>La base está preparada para crecer con nuevas cosas, sin perder el enfoque premium.</p>
+          </article>
+        </div>
+      </section>
+    </div>
   </body>
 </html>
+
+<style>
+  :root {
+    --bg: #090c10;
+    --bg-2: #101821;
+    --panel: rgba(16, 20, 27, 0.82);
+    --panel-soft: rgba(19, 26, 33, 0.8);
+    --line: rgba(255, 255, 255, 0.08);
+    --text: #edf1f5;
+    --muted: #a2acba;
+    --soft: #dfe7f3;
+    --ghost: rgba(255, 255, 255, 0.02);
+    --shadow: 0 28px 50px rgba(0, 0, 0, 0.28);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 28%),
+      linear-gradient(180deg, #090d11 0%, #0b1015 100%);
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 26px 18px 48px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.04), transparent 48%);
+    filter: blur(50px);
+  }
+
+  .page-shell {
+    position: relative;
+    width: min(1180px, 100%);
+    z-index: 1;
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    min-height: 72px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 18px;
+  }
+
+  .brand-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line);
+  }
+
+  .brand-name {
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    font-size: 1.1rem;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .nav a {
+    transition: color 0.2s ease;
+  }
+
+  .nav a:hover {
+    color: var(--text);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 44px;
+    align-items: center;
+    padding: 64px 0 52px;
+  }
+
+  .eyebrow,
+  .section-kicker {
+    margin: 0 0 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.8rem, 5.5vw, 5rem);
+    line-height: 0.96;
+    letter-spacing: -0.06em;
+    font-weight: 700;
+    max-width: 700px;
+  }
+
+  .subtitle {
+    margin-top: 22px;
+    max-width: 620px;
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.8;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 30px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 18px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-weight: 600;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .button.primary {
+    background: #f2f5f9;
+    color: #0d1117;
+  }
+
+  .button.secondary {
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--soft);
+  }
+
+  .button.ghost {
+    background: var(--ghost);
+    color: var(--soft);
+  }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-frame {
+    position: relative;
+    width: min(100%, 420px);
+    border-radius: 26px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--panel-soft);
+    box-shadow: var(--shadow);
+  }
+
+  .image-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+    z-index: 1;
+  }
+
+  .image-frame img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .projects {
+    padding-top: 10px;
+  }
+
+  .section-header {
+    margin-bottom: 22px;
+  }
+
+  .section-header h2 {
+    margin: 0;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    letter-spacing: -0.05em;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .project-card {
+    display: block;
+    padding: 24px 20px;
+    background: linear-gradient(180deg, var(--panel-soft), rgba(10, 13, 18, 0.9));
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  .card-featured {
+    background: linear-gradient(180deg, rgba(25, 30, 39, 0.95), rgba(12, 15, 20, 0.9));
+  }
+
+  .card-tag {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: var(--muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .project-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+    letter-spacing: -0.04em;
+  }
+
+  .project-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 860px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .topbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-bottom: 14px;
+    }
+
+    .nav {
+      gap: 10px 18px;
+    }
+
+    .image-frame img {
+      height: 440px;
+    }
+  }
+</style>
