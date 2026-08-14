@@ -1,411 +1,1219 @@
 ---
+import Layout from '../layouts/Layout.astro';
+
+const katarinaGallery = [
+  {
+    id: 'kat2',
+    src: '/katarina2.jpg',
+    title: 'The Sinister Blade',
+    subtitle: 'Katarina Du Couteau',
+    quote: '"Violence solves everything."',
+    tag: 'Favorite Champion & Waifu'
+  },
+  {
+    id: 'kat1',
+    src: '/katarina1.jpg',
+    title: 'Red Daggers',
+    subtitle: 'Noxian Assassin',
+    quote: '"Never question my loyalty. You will never see what I do for Noxus."',
+    tag: 'Agility & Lethality'
+  },
+  {
+    id: 'kat3',
+    src: '/katarina3.jpg',
+    title: 'Death Lotus',
+    subtitle: 'Blades in the Dark',
+    quote: '"Too slow!"',
+    tag: 'Precision & Speed'
+  },
+  {
+    id: 'kat5',
+    src: '/katarina5.png',
+    title: 'Katarina Render',
+    subtitle: 'High Definition Artwork',
+    quote: '"Why? Because I can."',
+    tag: 'Visual Signature'
+  }
+];
+
+const projects = [
+  {
+    title: 'Calculadora CA',
+    subtitle: 'Combat Achievements Tool',
+    description: 'Herramienta web optimizada para analizar, organizar y calcular progresos de Combat Achievements.',
+    tag: 'Herramienta',
+    tech: ['Astro', 'TypeScript', 'Gaming UI'],
+    link: '/ca-tier-calculator',
+    isExternal: false,
+    featured: true,
+    badge: 'Destacado'
+  },
+  {
+    title: 'Plugins de RuneLite',
+    subtitle: 'RuneLite / OSRS Mods',
+    description: 'Plugins y módulos orientados a potenciar la interfaz y automatización de métricas en RuneLite.',
+    tag: 'Game Tools',
+    tech: ['Java', 'RuneLite API', 'Open Source'],
+    link: '/plugins',
+    isExternal: false,
+    featured: true,
+    badge: 'Popular'
+  },
+  {
+    title: 'GitHub Repositories',
+    subtitle: '@PaJauKat',
+    description: 'Perfil oficial con código fuente, herramientas experimentales y proyectos en desarrollo constante.',
+    tag: 'Código Fuente',
+    tech: ['Git', 'Full Stack', 'Software Dev'],
+    link: 'https://github.com/PaJauKat',
+    isExternal: true,
+    featured: false,
+    badge: 'GitHub'
+  },
+  {
+    title: 'Próximos Proyectos',
+    subtitle: 'En construcción...',
+    description: 'Espacio preparado para integrar nuevas aplicaciones, servicios web, bots y herramientas.',
+    tag: 'Futuro',
+    tech: ['APIs', 'Automation', 'Nuevas Apps'],
+    link: 'https://github.com/PaJauKat',
+    isExternal: true,
+    featured: false,
+    badge: 'Próximamente'
+  }
+];
+
+const skills = [
+  { name: 'TypeScript & JavaScript', level: 'Avanzado', icon: '⚡' },
+  { name: 'Astro & Frontend UI', level: 'Avanzado', icon: '🚀' },
+  { name: 'Java & Game Tooling', level: 'Intermedio', icon: '☕' },
+  { name: 'Diseño Dark & UX', level: 'Especialidad', icon: '🎨' },
+  { name: 'Git & GitHub Workflow', level: 'Avanzado', icon: '🐙' },
+  { name: 'Automatizaciones & Scripting', level: 'Intermedio', icon: '🛠️' }
+];
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Pajau es un alias personal y un portafolio de proyectos, herramientas y trabajo creativo."
-    />
-    <title>Pajau</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="backdrop"></div>
+<Layout title="Pajau | Software Developer & Portfolio" description="Portafolio personal de Pajau (@PaJauKat): Desarrollador de software, herramientas web, plugins y estética inspirada en Katarina.">
+  <div class="page-container">
+    
+    <!-- Top Navigation -->
+    <header class="navbar">
+      <a href="#top" class="brand">
+        <img src="/logo.png" alt="Pajau Logo" class="brand-img" />
+        <div class="brand-text">
+          <span class="brand-name">PAJAU<span class="dot">.</span></span>
+          <span class="brand-sub">SOFTWARE DEV</span>
+        </div>
+      </a>
 
-    <div class="page-shell">
-      <header class="topbar">
-        <div class="brand-wrap">
-          <img src="/logo.png" alt="Logo de Pajau" class="brand-logo" />
-          <span class="brand-name">Pajau</span>
+      <nav class="nav-links">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#katarina">Katarina Corner</a>
+        <a href="#sobre-mi">Sobre mí</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/PaJauKat" target="_blank" rel="noopener noreferrer" class="btn btn-github">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="/rch" target="_blank" rel="noopener noreferrer" class="btn btn-discord">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+          </svg>
+          <span>Discord</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="top" class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span>Desarrollador de Software & Creador</span>
         </div>
 
-        <nav class="nav" aria-label="Navegación principal">
-          <a href="#inicio">Inicio</a>
-          <a href="#proyectos">Proyectos</a>
-          <a href="https://github.com/PaJauKat" target="_blank" rel="noreferrer">GitHub</a>
-        </nav>
-      </header>
+        <h1 class="hero-title">
+          Código con impacto, <br />
+          <span class="highlight">estética carmesí.</span>
+        </h1>
 
-      <main id="inicio" class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Personal brand</p>
-          <h1>Crear cosas con criterio. Cuidar cada detalle.</h1>
-          <p class="subtitle">
-            Pajau es mi alias personal: un espacio para proyectos, herramientas y ideas que valen la pena construir bien.
-          </p>
+        <p class="hero-description">
+          Soy <strong class="text-white">Pajau</strong>, desarrollador enfocado en construir herramientas útiles, aplicaciones web modernas y plugins de alto rendimiento. Mi lema es crear software preciso y directo al grano.
+        </p>
 
-          <div class="actions">
-            <a href="/plugins" class="button primary">Ver proyectos</a>
-            <a href="/ca-tier-calculator" class="button secondary">Calculadora CA</a>
-            <a href="https://github.com/PaJauKat" class="button ghost" target="_blank" rel="noreferrer">GitHub</a>
+        <div class="hero-tags">
+          <div class="tag-chip">
+            <span class="tag-icon">⚔️</span>
+            <span>Waifu: Katarina</span>
+          </div>
+          <div class="tag-chip">
+            <span class="tag-icon">🐙</span>
+            <span>@PaJauKat</span>
+          </div>
+          <div class="tag-chip">
+            <span class="tag-icon">⚡</span>
+            <span>Open Source & Tools</span>
           </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="image-frame">
-            <img src="/katarina2.jpg" alt="Imagen estética inspirada en Katarina" />
+        <div class="hero-cta">
+          <a href="#proyectos" class="btn btn-primary">
+            <span>Explorar Proyectos</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="https://github.com/PaJauKat" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <span>Ver GitHub</span>
+            <span class="btn-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="katarina-card-featured">
+          <div class="card-glow"></div>
+          <div class="card-inner">
+            <img id="hero-featured-img" src="/katarina2.jpg" alt="Katarina The Sinister Blade" class="hero-img" />
+            <div class="hero-img-gradient"></div>
+            
+            <div class="card-caption">
+              <div class="caption-header">
+                <span id="hero-featured-tag" class="caption-tag">Favorite Champion & Waifu</span>
+                <span class="caption-blade">🗡️</span>
+              </div>
+              <h3 id="hero-featured-title" class="caption-title">The Sinister Blade</h3>
+              <p id="hero-featured-quote" class="caption-quote">"Violence solves everything."</p>
+            </div>
           </div>
         </div>
-      </main>
+      </div>
+    </section>
 
-      <section id="proyectos" class="projects">
-        <div class="section-header">
-          <p class="section-kicker">Proyectos</p>
-          <h2>Un portfolio de trabajo con identidad.</h2>
-        </div>
+    <!-- Projects Section -->
+    <section id="proyectos" class="section projects-section">
+      <div class="section-header">
+        <div class="header-badge">PROYECTOS & HERRAMIENTAS</div>
+        <h2 class="section-title">Portafolio en crecimiento <span class="highlight-red">⚡</span></h2>
+        <p class="section-sub">Soluciones prácticas, calculadoras de juego y desarrollo de código abierto.</p>
+      </div>
 
-        <div class="project-grid">
-          <a href="/ca-tier-calculator" class="project-card project-card--featured">
-            <div class="card-topline">
-              <span class="card-tag">Herramienta</span>
-              <span class="card-arrow">↗</span>
+      <div class="projects-grid">
+        {projects.map((proj) => (
+          <article class={`project-card ${proj.featured ? 'featured' : ''}`}>
+            <div class="card-top">
+              <span class="card-tag">{proj.tag}</span>
+              <span class="card-badge">{proj.badge}</span>
             </div>
-            <h3>Calculadora CA</h3>
-            <p>Proyecto práctico para ordenar, comparar y visualizar ideas de forma clara y útil.</p>
-          </a>
 
-          <a href="/plugins" class="project-card">
-            <div class="card-topline">
-              <span class="card-tag">Utilidades</span>
-              <span class="card-arrow">↗</span>
+            <div class="card-body">
+              <h3 class="proj-title">{proj.title}</h3>
+              <p class="proj-sub">{proj.subtitle}</p>
+              <p class="proj-desc">{proj.description}</p>
             </div>
-            <h3>Plugins</h3>
-            <p>Pequeños recursos pensados para mejorar la experiencia y simplificar tareas.</p>
-          </a>
 
-          <article class="project-card">
-            <div class="card-topline">
-              <span class="card-tag">Futuro</span>
-              <span class="card-arrow">→</span>
+            <div class="card-bottom">
+              <div class="tech-stack">
+                {proj.tech.map((t) => (
+                  <span class="tech-pill">{t}</span>
+                ))}
+              </div>
+
+              <a 
+                href={proj.link} 
+                target={proj.isExternal ? "_blank" : "_self"} 
+                rel={proj.isExternal ? "noopener noreferrer" : ""} 
+                class="proj-link"
+              >
+                <span>Acceder</span>
+                <span class="link-icon">{proj.isExternal ? '↗' : '→'}</span>
+              </a>
             </div>
-            <h3>Más proyectos</h3>
-            <p>La base está diseñada para crecer con nuevos lanzamientos sin saturar la navegación.</p>
           </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Katarina Showcase Section -->
+    <section id="katarina" class="section katarina-section">
+      <div class="section-header">
+        <div class="header-badge">WAIFU CORNER</div>
+        <h2 class="section-title">Katarina Du Couteau <span class="highlight-red">🗡️</span></h2>
+        <p class="section-sub">Mi waifu favorita de League of Legends y la inspiración principal de mi identidad gráfica.</p>
+      </div>
+
+      <div class="gallery-wrapper">
+        <div class="gallery-preview-grid">
+          {katarinaGallery.map((kat, index) => (
+            <button 
+              class={`gallery-card ${index === 0 ? 'active' : ''}`}
+              data-src={kat.src}
+              data-title={kat.title}
+              data-subtitle={kat.subtitle}
+              data-quote={kat.quote}
+              data-tag={kat.tag}
+            >
+              <div class="gal-img-frame">
+                <img src={kat.src} alt={kat.title} />
+              </div>
+              <div class="gal-info">
+                <h4>{kat.title}</h4>
+                <p>{kat.subtitle}</p>
+              </div>
+            </button>
+          ))}
         </div>
-      </section>
-    </div>
-  </body>
-</html>
+
+        <div class="katarina-focus-panel">
+          <div class="focus-frame">
+            <img id="katarina-active-img" src="/katarina1.jpg" alt="Katarina Display" />
+            <div class="focus-overlay">
+              <span id="katarina-active-tag" class="focus-tag">Agility & Lethality</span>
+              <h3 id="katarina-active-title">Red Daggers</h3>
+              <p id="katarina-active-quote" class="focus-quote">"Never question my loyalty. You will never see what I do for Noxus."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me & Skills Section -->
+    <section id="sobre-mi" class="section about-section">
+      <div class="about-grid">
+        <div class="about-card main-bio">
+          <div class="header-badge">SOBRE MÍ</div>
+          <h2>Desarrollo con enfoque directo</h2>
+          <p>
+            Me apasiona crear proyectos que combinan un excelente diseño oscuro con funcionalidad real. Desde herramientas web hasta extensiones y módulos personalizados, busco constantemente expandir mis habilidades.
+          </p>
+          
+          <div class="bio-stats">
+            <div class="stat-item">
+              <span class="stat-number">PaJau</span>
+              <span class="stat-label">Alias & Firma</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">GitHub</span>
+              <span class="stat-label">@PaJauKat</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">Katarina</span>
+              <span class="stat-label">Waifu #1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card skills-panel">
+          <div class="header-badge">STACK & HABILIDADES</div>
+          <h3>Tecnologías clave</h3>
+          <div class="skills-grid">
+            {skills.map((s) => (
+              <div class="skill-item">
+                <span class="skill-icon">{s.icon}</span>
+                <div class="skill-details">
+                  <span class="skill-name">{s.name}</span>
+                  <span class="skill-level">{s.level}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Discord Community Banner -->
+      <div class="discord-banner">
+        <div class="banner-content">
+          <h3>¿Quieres estar al tanto de las novedades o charlar?</h3>
+          <p>Súmate al servidor de Discord de la comunidad para compartir ideas, probar herramientas y más.</p>
+        </div>
+        <a href="/rch" target="_blank" rel="noopener noreferrer" class="btn btn-discord btn-lg">
+          <span>Unirse al Discord (/rch)</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="/logo.png" alt="Pajau Logo" class="footer-logo" />
+          <span class="footer-title">PAJAU</span>
+        </div>
+
+        <p class="footer-quote">
+          "Prepare for trouble... and make it Katarina." 🗡️
+        </p>
+
+        <div class="footer-links">
+          <a href="https://github.com/PaJauKat" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="/rch" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="/ca-tier-calculator">Calculadora CA</a>
+          <a href="/plugins">Plugins</a>
+        </div>
+
+        <div class="footer-copy">
+          © {new Date().getFullYear()} Pajau. Todos los derechos reservados.
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</Layout>
+
+<script>
+  // Interactive Gallery script
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryCards = document.querySelectorAll('.gallery-card');
+    const activeImg = document.getElementById('katarina-active-img') as HTMLImageElement;
+    const activeTitle = document.getElementById('katarina-active-title');
+    const activeQuote = document.getElementById('katarina-active-quote');
+    const activeTag = document.getElementById('katarina-active-tag');
+
+    galleryCards.forEach(card => {
+      card.addEventListener('click', () => {
+        galleryCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+
+        const src = card.getAttribute('data-src');
+        const title = card.getAttribute('data-title');
+        const quote = card.getAttribute('data-quote');
+        const tag = card.getAttribute('data-tag');
+
+        if (activeImg && src) activeImg.src = src;
+        if (activeTitle && title) activeTitle.textContent = title;
+        if (activeQuote && quote) activeQuote.textContent = quote;
+        if (activeTag && tag) activeTag.textContent = tag;
+      });
+    });
+  });
+</script>
 
 <style>
-  :root {
-    --bg: #090c10;
-    --bg-2: #101821;
-    --panel: rgba(16, 20, 27, 0.82);
-    --panel-soft: rgba(19, 26, 33, 0.8);
-    --line: rgba(255, 255, 255, 0.08);
-    --text: #edf1f5;
-    --muted: #a2acba;
-    --soft: #dfe7f3;
-    --ghost: rgba(255, 255, 255, 0.02);
-    --shadow: 0 28px 50px rgba(0, 0, 0, 0.28);
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background:
-      radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 28%),
-      linear-gradient(180deg, #090d11 0%, #0b1015 100%);
-    color: var(--text);
-    font-family: "Inter", sans-serif;
-    display: flex;
-    justify-content: center;
-    padding: 26px 18px 48px;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  img {
-    max-width: 100%;
-    display: block;
-  }
-
-  .backdrop {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.04), transparent 48%);
-    filter: blur(50px);
-  }
-
-  .page-shell {
+  .page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 24px 60px;
     position: relative;
-    width: min(1180px, 100%);
     z-index: 1;
   }
 
-  .topbar {
+  /* Navbar */
+  .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 18px;
-    min-height: 72px;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 18px;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: rgba(12, 16, 24, 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    margin-bottom: 40px;
+    position: sticky;
+    top: 20px;
+    z-index: 100;
   }
 
-  .brand-wrap {
-    display: inline-flex;
+  .brand {
+    display: flex;
     align-items: center;
     gap: 12px;
+    text-decoration: none;
   }
 
-  .brand-logo {
-    width: 34px;
-    height: 34px;
+  .brand-img {
+    width: 38px;
+    height: 38px;
     border-radius: 10px;
     object-fit: cover;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--line);
+    border: 1px solid var(--border);
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
   }
 
   .brand-name {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .brand-name .dot {
+    color: var(--crimson);
+  }
+
+  .brand-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--crimson);
     font-weight: 700;
-    letter-spacing: -0.04em;
-    font-size: 1.1rem;
   }
 
-  .nav {
+  .nav-links {
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    color: var(--muted);
-    font-size: 0.86rem;
-    letter-spacing: 0.02em;
+    gap: 28px;
   }
 
-  .nav a {
-    transition: color 0.2s ease, opacity 0.2s ease;
-    opacity: 0.9;
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
   }
 
-  .nav a:hover {
-    color: var(--text);
-    opacity: 1;
+  .nav-links a:hover {
+    color: var(--crimson-hover);
   }
 
-  .hero {
-    display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 42px;
-    align-items: center;
-    padding: 72px 0 42px;
-  }
-
-  .eyebrow,
-  .section-kicker {
-    margin: 0 0 18px;
-    text-transform: uppercase;
-    letter-spacing: 0.13em;
-    font-size: 0.7rem;
-    color: var(--muted);
-  }
-
-  h1 {
-    margin: 0;
-    font-size: clamp(2.8rem, 5vw, 5.3rem);
-    line-height: 0.94;
-    letter-spacing: -0.07em;
-    font-weight: 700;
-    max-width: 700px;
-  }
-
-  .subtitle {
-    margin-top: 22px;
-    max-width: 620px;
-    color: var(--muted);
-    font-size: 1.08rem;
-    line-height: 1.8;
-  }
-
-  .actions {
+  .nav-actions {
     display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-top: 32px;
+    gap: 10px;
   }
 
-  .button {
+  /* Buttons */
+  .btn {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-height: 46px;
-    padding: 0 18px;
-    border-radius: 999px;
-    border: 1px solid var(--line);
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 12px;
     font-weight: 600;
-    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
   }
 
-  .button:hover {
-    transform: translateY(-1px);
-    border-color: rgba(255, 255, 255, 0.18);
+  .btn-primary {
+    background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+    color: #fff;
+    box-shadow: 0 4px 20px var(--crimson-glow);
   }
 
-  .button.primary {
-    background: linear-gradient(180deg, #f6f9fd 0%, #dde5ee 100%);
-    color: #0b1015;
-    box-shadow: 0 20px 30px rgba(255, 255, 255, 0.08);
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 28px rgba(255, 42, 85, 0.6);
   }
 
-  .button.secondary {
-    background: rgba(255, 255, 255, 0.02);
-    color: var(--soft);
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--border-subtle);
+    color: var(--text-primary);
   }
 
-  .button.ghost {
-    background: rgba(255, 255, 255, 0.02);
-    color: var(--soft);
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--border);
+    transform: translateY(-2px);
   }
 
+  .btn-github {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-github:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-discord {
+    background: rgba(88, 101, 242, 0.15);
+    color: #7289da;
+    border-color: rgba(88, 101, 242, 0.3);
+  }
+
+  .btn-discord:hover {
+    background: rgba(88, 101, 242, 0.25);
+    color: #fff;
+    border-color: rgba(88, 101, 242, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .btn-lg {
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+
+  /* Hero Section */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+    padding: 40px 0 80px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(255, 42, 85, 0.08);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--crimson);
+    margin-bottom: 20px;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--crimson);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--crimson);
+    animation: pulse 1.8s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(0.95); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.6; }
+    100% { transform: scale(0.95); opacity: 1; }
+  }
+
+  .hero-title {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, #ff2a55 0%, #ff8099 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 580px;
+  }
+
+  .text-white {
+    color: var(--text-primary);
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .tag-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* Hero Visual Card */
   .hero-visual {
     display: flex;
     justify-content: center;
   }
 
-  .image-frame {
+  .katarina-card-featured {
     position: relative;
-    width: min(100%, 420px);
-    border-radius: 28px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    background: var(--panel-soft);
-    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 420px;
+    border-radius: 24px;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(255, 42, 85, 0.4) 0%, rgba(255, 255, 255, 0.05) 100%);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
   }
 
-  .image-frame::before {
-    content: "";
+  .card-glow {
+    position: absolute;
+    inset: -10px;
+    background: radial-gradient(circle, rgba(255, 42, 85, 0.3) 0%, transparent 70%);
+    filter: blur(20px);
+    z-index: -1;
+  }
+
+  .card-inner {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #0d111a;
+    height: 500px;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s ease;
+  }
+
+  .katarina-card-featured:hover .hero-img {
+    transform: scale(1.04);
+  }
+
+  .hero-img-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
-    z-index: 1;
+    background: linear-gradient(to top, #0d111a 15%, transparent 60%);
   }
 
-  .image-frame img {
-    width: 100%;
-    height: 560px;
-    object-fit: cover;
-    object-position: center;
+  .card-caption {
+    position: absolute;
+    bottom: 0;
+    inset-x: 0;
+    padding: 24px;
+    z-index: 2;
   }
 
-  .projects {
-    padding-top: 10px;
+  .caption-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .caption-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--crimson);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .caption-title {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .caption-quote {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  /* Common Sections */
+  .section {
+    padding: 80px 0;
   }
 
   .section-header {
-    margin-bottom: 22px;
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 50px;
   }
 
-  .section-header h2 {
-    margin: 0;
-    font-size: clamp(1.9rem, 3vw, 2.8rem);
-    letter-spacing: -0.05em;
+  .header-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--crimson);
+    margin-bottom: 12px;
   }
 
-  .project-grid {
+  .section-title {
+    font-family: var(--font-title);
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .highlight-red {
+    color: var(--crimson);
+  }
+
+  .section-sub {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+  }
+
+  /* Projects Section */
+  .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 24px;
   }
 
   .project-card {
-    display: block;
-    padding: 22px 20px 20px;
-    background: linear-gradient(180deg, rgba(20, 25, 33, 0.88), rgba(9, 12, 17, 0.9));
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    box-shadow: var(--shadow);
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
   }
 
   .project-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(255, 255, 255, 0.16);
-    box-shadow: 0 26px 42px rgba(0, 0, 0, 0.32);
+    background: var(--bg-card-hover);
+    border-color: var(--border);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
   }
 
-  .project-card--featured {
-    background: linear-gradient(180deg, rgba(29, 36, 46, 0.94), rgba(11, 14, 19, 0.92));
+  .project-card.featured {
+    border-color: rgba(255, 42, 85, 0.25);
   }
 
-  .card-topline {
+  .card-top {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    align-items: center;
     margin-bottom: 18px;
   }
 
   .card-tag {
-    display: inline-block;
-    color: var(--muted);
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
     text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
-  .card-arrow {
-    color: var(--soft);
-    font-size: 1.05rem;
-    opacity: 0.9;
+  .card-badge {
+    padding: 4px 10px;
+    background: rgba(255, 42, 85, 0.1);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--crimson);
   }
 
-  .project-card h3 {
-    margin: 0 0 10px;
-    font-size: 1.3rem;
-    letter-spacing: -0.04em;
+  .proj-title {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
   }
 
-  .project-card p {
-    margin: 0;
-    color: var(--muted);
+  .proj-sub {
+    font-size: 0.85rem;
+    color: var(--crimson);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .proj-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .card-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tech-pill {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+    color: var(--text-secondary);
+  }
+
+  .proj-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .proj-link:hover {
+    background: var(--crimson);
+    border-color: var(--crimson);
+    color: #fff;
+  }
+
+  /* Katarina Gallery Section */
+  .gallery-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .gallery-preview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .gallery-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.25s ease;
+  }
+
+  .gallery-card:hover, .gallery-card.active {
+    background: var(--bg-card-hover);
+    border-color: var(--border);
+    transform: scale(1.02);
+  }
+
+  .gallery-card.active {
+    box-shadow: 0 0 15px rgba(255, 42, 85, 0.3);
+  }
+
+  .gal-img-frame {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .gal-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gal-info h4 {
+    font-family: var(--font-title);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .gal-info p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .katarina-focus-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .focus-frame {
+    position: relative;
+    height: 420px;
+  }
+
+  .focus-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .focus-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #07090e 20%, transparent 70%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+  }
+
+  .focus-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--crimson);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  .focus-overlay h3 {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .focus-quote {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  /* About & Skills */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .about-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    padding: 36px;
+  }
+
+  .main-bio h2 {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .main-bio p {
+    color: var(--text-secondary);
     line-height: 1.7;
+    margin-bottom: 30px;
   }
 
-  @media (max-width: 860px) {
+  .bio-stats {
+    display: flex;
+    gap: 30px;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 20px;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-number {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--crimson);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .skills-panel h3 {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+  }
+
+  .skill-icon {
+    font-size: 1.2rem;
+  }
+
+  .skill-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .skill-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .skill-level {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  /* Discord Banner */
+  .discord-banner {
+    background: linear-gradient(135deg, rgba(88, 101, 242, 0.15) 0%, rgba(15, 19, 28, 0.8) 100%);
+    border: 1px solid rgba(88, 101, 242, 0.3);
+    border-radius: 24px;
+    padding: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .banner-content h3 {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .banner-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 40px;
+    margin-top: 80px;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
+
+  .footer-title {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-quote {
+    font-size: 0.9rem;
+    color: var(--crimson);
+    font-style: italic;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--crimson-hover);
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 900px) {
     .hero {
       grid-template-columns: 1fr;
+      text-align: center;
     }
 
-    .project-grid {
+    .hero-badge, .hero-tags, .hero-cta {
+      justify-content: center;
+    }
+
+    .hero-description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gallery-wrapper, .about-grid {
       grid-template-columns: 1fr;
+    }
+
+    .discord-banner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .nav-links {
+      display: none;
     }
   }
 
-  @media (max-width: 560px) {
-    .topbar {
-      flex-direction: column;
-      align-items: flex-start;
-      padding-bottom: 14px;
+  @media (max-width: 600px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
     }
 
-    .nav {
-      gap: 10px 18px;
+    .gallery-preview-grid {
+      grid-template-columns: 1fr;
     }
 
-    .image-frame img {
-      height: 440px;
+    .navbar {
+      padding: 12px 16px;
     }
   }
 </style>

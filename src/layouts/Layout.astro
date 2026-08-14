@@ -1,23 +1,147 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Pajau | Software Developer & Portfolio", 
+	description = "Portafolio personal de Pajau - Desarrollador de software, herramientas, plugins y proyectos con estética inspirada en Katarina." 
+} = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 	</head>
 	<body>
+		<div class="ambient-background">
+			<div class="glow-orb orb-1"></div>
+			<div class="glow-orb orb-2"></div>
+			<div class="glow-orb orb-3"></div>
+			<div class="grid-overlay"></div>
+		</div>
 		<slot />
 	</body>
 </html>
 
-<style>
-	html,
-	body {
+<style is:global>
+	:root {
+		--bg-dark: #07090e;
+		--bg-card: rgba(15, 19, 28, 0.75);
+		--bg-card-hover: rgba(23, 29, 42, 0.85);
+		--border: rgba(255, 42, 85, 0.15);
+		--border-strong: rgba(255, 42, 85, 0.35);
+		--border-subtle: rgba(255, 255, 255, 0.08);
+		
+		--crimson: #ff2a55;
+		--crimson-hover: #ff476e;
+		--crimson-glow: rgba(255, 42, 85, 0.4);
+		--crimson-dark: #8b0021;
+		
+		--text-primary: #f3f6fc;
+		--text-secondary: #94a3b8;
+		--text-muted: #64748b;
+		
+		--font-title: 'Outfit', sans-serif;
+		--font-body: 'Plus Jakarta Sans', sans-serif;
+	}
+
+	* {
+		box-sizing: border-box;
 		margin: 0;
-		width: 100%;
-		height: 100%;
+		padding: 0;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		color-scheme: dark;
+	}
+
+	body {
+		min-height: 100vh;
+		background-color: var(--bg-dark);
+		color: var(--text-primary);
+		font-family: var(--font-body);
+		overflow-x: hidden;
+		position: relative;
+		line-height: 1.6;
+	}
+
+	/* Background ambient graphics */
+	.ambient-background {
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 0;
+		overflow: hidden;
+	}
+
+	.glow-orb {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(120px);
+		opacity: 0.25;
+	}
+
+	.orb-1 {
+		top: -10%;
+		right: 10%;
+		width: 500px;
+		height: 500px;
+		background: radial-gradient(circle, #ff2a55 0%, #8b0021 100%);
+	}
+
+	.orb-2 {
+		top: 40%;
+		left: -10%;
+		width: 600px;
+		height: 600px;
+		background: radial-gradient(circle, #6b112d 0%, #1a0b1c 100%);
+		opacity: 0.2;
+	}
+
+	.orb-3 {
+		bottom: -10%;
+		right: 20%;
+		width: 550px;
+		height: 550px;
+		background: radial-gradient(circle, #3a0d1d 0%, #080a10 100%);
+		opacity: 0.3;
+	}
+
+	.grid-overlay {
+		position: absolute;
+		inset: 0;
+		background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+						  linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+		background-size: 40px 40px;
+		mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+	}
+
+	/* Scrollbar */
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+	::-webkit-scrollbar-track {
+		background: #07090e;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #1f2838;
+		border-radius: 5px;
+		border: 2px solid #07090e;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--crimson);
 	}
 </style>

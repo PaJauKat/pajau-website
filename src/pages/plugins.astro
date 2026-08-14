@@ -1,13 +1,121 @@
 ---
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="es">
-  <head>
-    <title>Plugins - Pajau</title>
-  </head>
-  <body>
-    <h1>Mis Plugins de RuneLite</h1>
-    <p>Próximamente lista de plugins para descargar.</p>
-    <a href="/">← Volver al inicio</a>
-  </body>
-</html>
+<Layout title="Plugins - Pajau | RuneLite Mods & Tools" description="Plugins de RuneLite y mods desarrollados por Pajau.">
+  <div class="subpage-container">
+    <header class="subpage-header">
+      <a href="/" class="back-link">← Volver al Inicio</a>
+      <div class="header-badge">RUNELITE & GAME TOOLS</div>
+      <h1>Plugins & Modificaciones</h1>
+      <p>Herramientas y utilidades personalizadas diseñadas para optimizar la experiencia en RuneLite y Old School RuneScape.</p>
+    </header>
+
+    <main class="subpage-content">
+      <div class="placeholder-card">
+        <div class="card-icon">☕</div>
+        <h2>Directorio de Plugins en Construcción</h2>
+        <p>Próximamente se listarán aquí todos los plugins disponibles, guías de instalación y enlaces de descarga directa o integración con el Plugin Hub de RuneLite.</p>
+        <div class="card-actions">
+          <a href="https://github.com/PaJauKat" target="_blank" rel="noopener noreferrer" class="btn btn-github">
+            Explorar en GitHub @PaJauKat
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .subpage-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .subpage-header {
+    margin-bottom: 40px;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--crimson);
+  }
+
+  .header-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--crimson);
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .placeholder-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px 32px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .card-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+
+  .placeholder-card h2 {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .placeholder-card p {
+    max-width: 550px;
+    margin: 0 auto 24px;
+  }
+
+  .btn-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn-github:hover {
+    background: var(--crimson);
+    border-color: var(--crimson);
+  }
+</style>

@@ -1,13 +1,128 @@
 ---
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="es">
-  <head>
-    <title>CA Tier Calculator - Pajau</title>
-  </head>
-  <body>
-    <h1>Calculadora de Combat Achievements</h1>
-    <p>Aquí montaremos tu frontend de React o la interfaz de la calculadora.</p>
-    <a href="/">← Volver al inicio</a>
-  </body>
-</html>
+<Layout title="Calculadora CA - Pajau | Combat Achievements" description="Calculadora de Combat Achievements para Old School RuneScape desarrollada por Pajau.">
+  <div class="subpage-container">
+    <header class="subpage-header">
+      <a href="/" class="back-link">← Volver al Inicio</a>
+      <div class="header-badge">GAMING TOOLS & METRICS</div>
+      <h1>Calculadora de Combat Achievements</h1>
+      <p>Calcula los puntos necesarios para desbloquear cada Tier de Combat Achievements (Easy, Medium, Hard, Elite, Master, Grandmaster).</p>
+    </header>
+
+    <main class="subpage-content">
+      <div class="calculator-card">
+        <div class="card-header-icon">⚔️</div>
+        <h2>Calculadora CA Interactiva</h2>
+        <p>Esta sección está lista para integrar tus componentes interactivos de cálculo, filtros por Boss/Dificultad y guardado de progreso local.</p>
+        <div class="tiers-preview">
+          <div class="tier-badge easy">Easy (33 Tasks)</div>
+          <div class="tier-badge medium">Medium (115 Tasks)</div>
+          <div class="tier-badge hard">Hard (304 Tasks)</div>
+          <div class="tier-badge elite">Elite (605 Tasks)</div>
+          <div class="tier-badge master">Master (1005 Tasks)</div>
+          <div class="tier-badge gm">Grandmaster (1465 Tasks)</div>
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .subpage-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .subpage-header {
+    margin-bottom: 40px;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--crimson);
+  }
+
+  .header-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--crimson);
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .calculator-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px 32px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .card-header-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+
+  .calculator-card h2 {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .calculator-card p {
+    max-width: 580px;
+    margin: 0 auto 30px;
+  }
+
+  .tiers-preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .tier-badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .tier-badge.easy { color: #4ade80; border-color: rgba(74, 222, 128, 0.3); }
+  .tier-badge.medium { color: #60a5fa; border-color: rgba(96, 165, 250, 0.3); }
+  .tier-badge.hard { color: #facc15; border-color: rgba(250, 204, 21, 0.3); }
+  .tier-badge.elite { color: #c084fc; border-color: rgba(192, 132, 252, 0.3); }
+  .tier-badge.master { color: #f87171; border-color: rgba(248, 113, 113, 0.3); }
+  .tier-badge.gm { color: #ff2a55; border-color: rgba(255, 42, 85, 0.5); }
+</style>
