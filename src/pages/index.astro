@@ -1,70 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const katarinaGallery = [
-  {
-    id: 'kat2',
-    src: '/katarina2.jpg',
-    title: 'The Sinister Blade',
-    subtitle: 'Katarina Du Couteau',
-    quote: '"Violence solves everything."',
-    tag: 'Favorite Champion & Waifu'
-  },
-  {
-    id: 'kat1',
-    src: '/katarina1.jpg',
-    title: 'Red Daggers',
-    subtitle: 'Noxian Assassin',
-    quote: '"Never question my loyalty. You will never see what I do for Noxus."',
-    tag: 'Agility & Lethality'
-  },
-  {
-    id: 'kat3',
-    src: '/katarina3.jpg',
-    title: 'Death Lotus',
-    subtitle: 'Blades in the Dark',
-    quote: '"Too slow!"',
-    tag: 'Precision & Speed'
-  },
-  {
-    id: 'kat5',
-    src: '/katarina5.png',
-    title: 'Katarina Render',
-    subtitle: 'High Definition Artwork',
-    quote: '"Why? Because I can."',
-    tag: 'Visual Signature'
-  }
-];
-
 const projects = [
   {
     title: 'Calculadora CA',
     subtitle: 'Combat Achievements Tool',
-    description: 'Herramienta web optimizada para analizar, organizar y calcular progresos de Combat Achievements.',
-    tag: 'Herramienta',
-    tech: ['Astro', 'TypeScript', 'Gaming UI'],
+    description: 'Herramienta web sencilla para analizar y calcular progresos de Combat Achievements en OSRS.',
+    tag: 'Herramienta OSRS',
+    tech: ['Astro', 'TypeScript'],
     link: '/ca-tier-calculator',
     isExternal: false,
     featured: true,
-    badge: 'Destacado'
+    badge: 'Herramienta'
   },
   {
     title: 'Plugins de RuneLite',
     subtitle: 'RuneLite / OSRS Mods',
-    description: 'Plugins y módulos orientados a potenciar la interfaz y automatización de métricas en RuneLite.',
-    tag: 'Game Tools',
-    tech: ['Java', 'RuneLite API', 'Open Source'],
+    description: 'Plugins y pequeños módulos en Java para personalizar la interfaz y utilidades en RuneLite.',
+    tag: 'RuneLite',
+    tech: ['Java', 'RuneLite API'],
     link: '/plugins',
     isExternal: false,
     featured: true,
-    badge: 'Popular'
+    badge: 'Hobby'
   },
   {
     title: 'GitHub Repositories',
     subtitle: '@PaJauKat',
-    description: 'Perfil oficial con código fuente, herramientas experimentales y proyectos en desarrollo constante.',
+    description: 'Mi perfil de GitHub donde subo mis proyectos, experimentos y el código que voy escribiendo.',
     tag: 'Código Fuente',
-    tech: ['Git', 'Full Stack', 'Software Dev'],
+    tech: ['Git', 'Open Source'],
     link: 'https://github.com/PaJauKat',
     isExternal: true,
     featured: false,
@@ -73,27 +38,27 @@ const projects = [
   {
     title: 'Próximos Proyectos',
     subtitle: 'En construcción...',
-    description: 'Espacio preparado para integrar nuevas aplicaciones, servicios web, bots y herramientas.',
-    tag: 'Futuro',
-    tech: ['APIs', 'Automation', 'Nuevas Apps'],
+    description: 'Espacio reservado para cualquier otra idea, script o bot que se me ocurra programar más adelante.',
+    tag: 'Ideas',
+    tech: ['APIs', 'Scripts'],
     link: 'https://github.com/PaJauKat',
     isExternal: true,
     featured: false,
-    badge: 'Próximamente'
+    badge: 'Futuro'
   }
 ];
 
 const skills = [
-  { name: 'TypeScript & JavaScript', level: 'Avanzado', icon: '⚡' },
-  { name: 'Astro & Frontend UI', level: 'Avanzado', icon: '🚀' },
-  { name: 'Java & Game Tooling', level: 'Intermedio', icon: '☕' },
-  { name: 'Diseño Dark & UX', level: 'Especialidad', icon: '🎨' },
-  { name: 'Git & GitHub Workflow', level: 'Avanzado', icon: '🐙' },
-  { name: 'Automatizaciones & Scripting', level: 'Intermedio', icon: '🛠️' }
+  { name: 'TypeScript & JavaScript', level: 'Uso personal', icon: '⚡' },
+  { name: 'Astro & Web Tech', level: 'Aprendiendo en el camino', icon: '🚀' },
+  { name: 'Java & RuneLite Plugins', level: 'Intermedio', icon: '☕' },
+  { name: 'Proyectos & Programación', level: 'Por puro hobby', icon: '🛠️' },
+  { name: 'Git & GitHub Workflow', level: 'Básico / Uso diario', icon: '🐙' },
+  { name: 'Scripts & Utilidades', level: 'Experimentos', icon: '⚙️' }
 ];
 ---
 
-<Layout title="Pajau | Software Developer & Portfolio" description="Portafolio personal de Pajau (@PaJauKat): Desarrollador de software, herramientas web, plugins y estética inspirada en Katarina.">
+<Layout title="Pajau | Proyectos & Software por Hobby" description="Sitio personal de Pajau (@PaJauKat): proyectos de software por hobby, herramientas y rincón fan de Katarina.">
   <div class="page-container">
     
     <!-- Top Navigation -->
@@ -102,13 +67,13 @@ const skills = [
         <img src="/logo.png" alt="Pajau Logo" class="brand-img" />
         <div class="brand-text">
           <span class="brand-name">PAJAU<span class="dot">.</span></span>
-          <span class="brand-sub">SOFTWARE DEV</span>
+          <span class="brand-sub">HOBBY DEV</span>
         </div>
       </a>
 
       <nav class="nav-links">
         <a href="#proyectos">Proyectos</a>
-        <a href="#katarina">Katarina Corner</a>
+        <a href="/katarina">Katarina Corner</a>
         <a href="#sobre-mi">Sobre mí</a>
       </nav>
 
@@ -133,36 +98,36 @@ const skills = [
       <div class="hero-content">
         <div class="hero-badge">
           <span class="pulse-dot"></span>
-          <span>Desarrollador de Software & Creador</span>
+          <span>Programando por Hobby & Diversión</span>
         </div>
 
         <h1 class="hero-title">
-          Código con impacto, <br />
-          <span class="highlight">estética carmesí.</span>
+          Haciendo código por hobby, <br />
+          <span class="highlight">sin pretensiones.</span>
         </h1>
 
         <p class="hero-description">
-          Soy <strong class="text-white">Pajau</strong>, desarrollador enfocado en construir herramientas útiles, aplicaciones web modernas y plugins de alto rendimiento. Mi lema es crear software preciso y directo al grano.
+          Soy <strong class="text-white">Pajau</strong> (@PaJauKat). No soy un experto en diseño ni desarrollador; solo un aficionado que programa en su tiempo libre, haciendo utilidades, plugins y proyectos sencillos por puro interés personal.
         </p>
 
         <div class="hero-tags">
           <div class="tag-chip">
             <span class="tag-icon">⚔️</span>
-            <span>Waifu: Katarina</span>
+            <span>Katarina Fan</span>
           </div>
           <div class="tag-chip">
             <span class="tag-icon">🐙</span>
             <span>@PaJauKat</span>
           </div>
           <div class="tag-chip">
-            <span class="tag-icon">⚡</span>
-            <span>Open Source & Tools</span>
+            <span class="tag-icon">💻</span>
+            <span>Proyectos por Hobby</span>
           </div>
         </div>
 
         <div class="hero-cta">
           <a href="#proyectos" class="btn btn-primary">
-            <span>Explorar Proyectos</span>
+            <span>Ver Proyectos</span>
             <span class="btn-arrow">→</span>
           </a>
           <a href="https://github.com/PaJauKat" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
@@ -176,12 +141,12 @@ const skills = [
         <div class="katarina-card-featured">
           <div class="card-glow"></div>
           <div class="card-inner">
-            <img id="hero-featured-img" src="/katarina2.jpg" alt="Katarina The Sinister Blade" class="hero-img" />
+            <img id="hero-featured-img" src="/katarina2.jpg" alt="Katarina Du Couteau" class="hero-img" />
             <div class="hero-img-gradient"></div>
             
             <div class="card-caption">
               <div class="caption-header">
-                <span id="hero-featured-tag" class="caption-tag">Favorite Champion & Waifu</span>
+                <span id="hero-featured-tag" class="caption-tag">Campeona Favorita (LoL)</span>
                 <span class="caption-blade">🗡️</span>
               </div>
               <h3 id="hero-featured-title" class="caption-title">The Sinister Blade</h3>
@@ -196,8 +161,8 @@ const skills = [
     <section id="proyectos" class="section projects-section">
       <div class="section-header">
         <div class="header-badge">PROYECTOS & HERRAMIENTAS</div>
-        <h2 class="section-title">Portafolio en crecimiento <span class="highlight-red">⚡</span></h2>
-        <p class="section-sub">Soluciones prácticas, calculadoras de juego y desarrollo de código abierto.</p>
+        <h2 class="section-title">Cosas que he programado <span class="highlight-red">⚡</span></h2>
+        <p class="section-sub">Herramientas simples, experimentos de código y utilidades para juegos.</p>
       </div>
 
       <div class="projects-grid">
@@ -236,45 +201,25 @@ const skills = [
       </div>
     </section>
 
-    <!-- Katarina Showcase Section -->
-    <section id="katarina" class="section katarina-section">
-      <div class="section-header">
-        <div class="header-badge">WAIFU CORNER</div>
-        <h2 class="section-title">Katarina Du Couteau <span class="highlight-red">🗡️</span></h2>
-        <p class="section-sub">Mi waifu favorita de League of Legends y la inspiración principal de mi identidad gráfica.</p>
-      </div>
-
-      <div class="gallery-wrapper">
-        <div class="gallery-preview-grid">
-          {katarinaGallery.map((kat, index) => (
-            <button 
-              class={`gallery-card ${index === 0 ? 'active' : ''}`}
-              data-src={kat.src}
-              data-title={kat.title}
-              data-subtitle={kat.subtitle}
-              data-quote={kat.quote}
-              data-tag={kat.tag}
-            >
-              <div class="gal-img-frame">
-                <img src={kat.src} alt={kat.title} />
-              </div>
-              <div class="gal-info">
-                <h4>{kat.title}</h4>
-                <p>{kat.subtitle}</p>
-              </div>
-            </button>
-          ))}
+    <!-- Katarina Corner Teaser Section -->
+    <section id="katarina" class="section katarina-teaser-section">
+      <div class="katarina-banner-card">
+        <div class="banner-info">
+          <div class="header-badge">WAIFU CORNER 🗡️</div>
+          <h2 class="section-title">Katarina Du Couteau</h2>
+          <p class="banner-desc">
+            Mi campeona favorita de League of Legends y referente de la temática del sitio.
+          </p>
+          <p class="banner-disclaimer">
+            <em>* Aclaración: Las imágenes no son de mi autoría, son solo ilustraciones y renders que me gustan.</em>
+          </p>
+          <a href="/katarina" class="btn btn-primary btn-lg mt-4">
+            <span>Ver Rincón de Katarina</span>
+            <span>→</span>
+          </a>
         </div>
-
-        <div class="katarina-focus-panel">
-          <div class="focus-frame">
-            <img id="katarina-active-img" src="/katarina1.jpg" alt="Katarina Display" />
-            <div class="focus-overlay">
-              <span id="katarina-active-tag" class="focus-tag">Agility & Lethality</span>
-              <h3 id="katarina-active-title">Red Daggers</h3>
-              <p id="katarina-active-quote" class="focus-quote">"Never question my loyalty. You will never see what I do for Noxus."</p>
-            </div>
-          </div>
+        <div class="banner-image-preview">
+          <img src="/katarina1.jpg" alt="Katarina Artwork" class="preview-thumb" />
         </div>
       </div>
     </section>
@@ -284,30 +229,30 @@ const skills = [
       <div class="about-grid">
         <div class="about-card main-bio">
           <div class="header-badge">SOBRE MÍ</div>
-          <h2>Desarrollo con enfoque directo</h2>
+          <h2>Programación por puro hobby</h2>
           <p>
-            Me apasiona crear proyectos que combinan un excelente diseño oscuro con funcionalidad real. Desde herramientas web hasta extensiones y módulos personalizados, busco constantemente expandir mis habilidades.
+            Hago software por hobby e interés personal en mi tiempo libre. No sé nada sobre diseño UI/UX (uso estilos oscuros sencillos), ni pretendo vender la pomada como experto. Simplemente me gusta inventar cosas, probar código y crear herramientas o plugins para lo que necesite.
           </p>
           
           <div class="bio-stats">
             <div class="stat-item">
               <span class="stat-number">PaJau</span>
-              <span class="stat-label">Alias & Firma</span>
+              <span class="stat-label">Alias</span>
             </div>
             <div class="stat-item">
               <span class="stat-number">GitHub</span>
               <span class="stat-label">@PaJauKat</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">Katarina</span>
-              <span class="stat-label">Waifu #1</span>
+              <span class="stat-number">Hobby</span>
+              <span class="stat-label">Software & Games</span>
             </div>
           </div>
         </div>
 
         <div class="about-card skills-panel">
-          <div class="header-badge">STACK & HABILIDADES</div>
-          <h3>Tecnologías clave</h3>
+          <div class="header-badge">LO QUE USO / APRENDO</div>
+          <h3>Tecnologías & Experimentos</h3>
           <div class="skills-grid">
             {skills.map((s) => (
               <div class="skill-item">
@@ -325,8 +270,8 @@ const skills = [
       <!-- Discord Community Banner -->
       <div class="discord-banner">
         <div class="banner-content">
-          <h3>¿Quieres estar al tanto de las novedades o charlar?</h3>
-          <p>Súmate al servidor de Discord de la comunidad para compartir ideas, probar herramientas y más.</p>
+          <h3>¿Quieres conversar o ver qué estoy haciendo?</h3>
+          <p>Súmate al servidor de Discord si quieres charlar o probar algún proyecto.</p>
         </div>
         <a href="/rch" target="_blank" rel="noopener noreferrer" class="btn btn-discord btn-lg">
           <span>Unirse al Discord (/rch)</span>
@@ -344,7 +289,7 @@ const skills = [
         </div>
 
         <p class="footer-quote">
-          "Prepare for trouble... and make it Katarina." 🗡️
+          "Violence solves everything... o al menos eso dice Katarina." 🗡️
         </p>
 
         <div class="footer-links">
@@ -352,44 +297,17 @@ const skills = [
           <a href="/rch" target="_blank" rel="noopener noreferrer">Discord</a>
           <a href="/ca-tier-calculator">Calculadora CA</a>
           <a href="/plugins">Plugins</a>
+          <a href="/katarina">Katarina Corner</a>
         </div>
 
         <div class="footer-copy">
-          © {new Date().getFullYear()} Pajau. Todos los derechos reservados.
+          © {new Date().getFullYear()} Pajau.
         </div>
       </div>
     </footer>
 
   </div>
 </Layout>
-
-<script>
-  // Interactive Gallery script
-  document.addEventListener('DOMContentLoaded', () => {
-    const galleryCards = document.querySelectorAll('.gallery-card');
-    const activeImg = document.getElementById('katarina-active-img') as HTMLImageElement;
-    const activeTitle = document.getElementById('katarina-active-title');
-    const activeQuote = document.getElementById('katarina-active-quote');
-    const activeTag = document.getElementById('katarina-active-tag');
-
-    galleryCards.forEach(card => {
-      card.addEventListener('click', () => {
-        galleryCards.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-
-        const src = card.getAttribute('data-src');
-        const title = card.getAttribute('data-title');
-        const quote = card.getAttribute('data-quote');
-        const tag = card.getAttribute('data-tag');
-
-        if (activeImg && src) activeImg.src = src;
-        if (activeTitle && title) activeTitle.textContent = title;
-        if (activeQuote && quote) activeQuote.textContent = quote;
-        if (activeTag && tag) activeTag.textContent = tag;
-      });
-    });
-  });
-</script>
 
 <style>
   .page-container {
@@ -876,121 +794,69 @@ const skills = [
     color: #fff;
   }
 
-  /* Katarina Gallery Section */
-  .gallery-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    align-items: center;
+  /* Katarina Teaser Banner */
+  .katarina-teaser-section {
+    padding: 60px 0;
   }
 
-  .gallery-preview-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .gallery-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 16px;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.25s ease;
-  }
-
-  .gallery-card:hover, .gallery-card.active {
-    background: var(--bg-card-hover);
-    border-color: var(--border);
-    transform: scale(1.02);
-  }
-
-  .gallery-card.active {
-    box-shadow: 0 0 15px rgba(255, 42, 85, 0.3);
-  }
-
-  .gal-img-frame {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .gal-img-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .gal-info h4 {
-    font-family: var(--font-title);
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text-primary);
-  }
-
-  .gal-info p {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-  }
-
-  .katarina-focus-panel {
+  .katarina-banner-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 24px;
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 32px;
+    align-items: center;
+    position: relative;
     overflow: hidden;
-    position: relative;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
   }
 
-  .focus-frame {
-    position: relative;
-    height: 420px;
+  .banner-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .focus-frame img {
+  .banner-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+  }
+
+  .banner-disclaimer {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .mt-4 {
+    margin-top: 16px;
+  }
+
+  .banner-image-preview {
+    width: 100%;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .preview-thumb {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center top;
   }
 
-  .focus-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, #07090e 20%, transparent 70%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 30px;
-  }
-
-  .focus-tag {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--crimson);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 4px;
-  }
-
-  .focus-overlay h3 {
-    font-family: var(--font-title);
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 6px;
-  }
-
-  .focus-quote {
-    font-size: 0.95rem;
-    font-style: italic;
-    color: var(--text-secondary);
+  @media (max-width: 800px) {
+    .katarina-banner-card {
+      grid-template-columns: 1fr;
+    }
+    .banner-image-preview {
+      height: 180px;
+    }
   }
 
   /* About & Skills */

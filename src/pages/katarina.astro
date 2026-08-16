@@ -1,0 +1,321 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const katarinaGallery = [
+  {
+    id: 'kat2',
+    src: '/katarina2.jpg',
+    title: 'The Sinister Blade',
+    subtitle: 'Katarina Du Couteau',
+    quote: '"Violence solves everything."',
+    tag: 'Favorite Champion'
+  },
+  {
+    id: 'kat1',
+    src: '/katarina1.jpg',
+    title: 'Red Daggers',
+    subtitle: 'Noxian Assassin',
+    quote: '"Never question my loyalty. You will never see what I do for Noxus."',
+    tag: 'Noxus Artwork'
+  },
+  {
+    id: 'kat3',
+    src: '/katarina3.jpg',
+    title: 'Death Lotus',
+    subtitle: 'Blades in the Dark',
+    quote: '"Too slow!"',
+    tag: 'Speed & Agility'
+  },
+  {
+    id: 'kat5',
+    src: '/katarina5.png',
+    title: 'Katarina Render',
+    subtitle: 'High Definition Artwork',
+    quote: '"Why? Because I can."',
+    tag: 'Render'
+  }
+];
+---
+
+<Layout title="Katarina Corner - Pajau" description="Sección dedicada a Katarina (League of Legends) con imágenes y artworks que me gustan.">
+  <div class="subpage-container">
+    <header class="subpage-header">
+      <a href="/" class="back-link">← Volver al Inicio</a>
+      <div class="header-badge">WAIFU CORNER</div>
+      <h1>Katarina Du Couteau 🗡️</h1>
+      <p>Mi personaje y champ favorito de League of Legends. Es la inspiración principal de la estética visual de este sitio.</p>
+      
+      <div class="disclaimer-box">
+        <span class="disclaimer-icon">ℹ️</span>
+        <p><strong>Aclaración sobre las imágenes:</strong> Ninguna de las ilustraciones o renders mostrados aquí es de mi autoría. Son únicamente imágenes y artworks oficiales/fanarts de Katarina que me gustan mucho y comparto como fan.</p>
+      </div>
+    </header>
+
+    <main class="subpage-content">
+      <div class="gallery-wrapper">
+        <div class="gallery-preview-grid">
+          {katarinaGallery.map((kat, index) => (
+            <button 
+              class={`gallery-card ${index === 0 ? 'active' : ''}`}
+              data-src={kat.src}
+              data-title={kat.title}
+              data-subtitle={kat.subtitle}
+              data-quote={kat.quote}
+              data-tag={kat.tag}
+            >
+              <div class="gal-img-frame">
+                <img src={kat.src} alt={kat.title} />
+              </div>
+              <div class="gal-info">
+                <h4>{kat.title}</h4>
+                <p>{kat.subtitle}</p>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <div class="katarina-focus-panel">
+          <div class="focus-frame">
+            <img id="katarina-active-img" src={katarinaGallery[0].src} alt="Katarina Display" />
+            <div class="focus-overlay">
+              <span id="katarina-active-tag" class="focus-tag">{katarinaGallery[0].tag}</span>
+              <h3 id="katarina-active-title">{katarinaGallery[0].title}</h3>
+              <p id="katarina-active-quote" class="focus-quote">{katarinaGallery[0].quote}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryCards = document.querySelectorAll('.gallery-card');
+    const activeImg = document.getElementById('katarina-active-img') as HTMLImageElement;
+    const activeTitle = document.getElementById('katarina-active-title');
+    const activeQuote = document.getElementById('katarina-active-quote');
+    const activeTag = document.getElementById('katarina-active-tag');
+
+    galleryCards.forEach(card => {
+      card.addEventListener('click', () => {
+        galleryCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+
+        const src = card.getAttribute('data-src');
+        const title = card.getAttribute('data-title');
+        const quote = card.getAttribute('data-quote');
+        const tag = card.getAttribute('data-tag');
+
+        if (activeImg && src) activeImg.src = src;
+        if (activeTitle && title) activeTitle.textContent = title;
+        if (activeQuote && quote) activeQuote.textContent = quote;
+        if (activeTag && tag) activeTag.textContent = tag;
+      });
+    });
+  });
+</script>
+
+<style>
+  .subpage-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .subpage-header {
+    margin-bottom: 40px;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--crimson);
+  }
+
+  .header-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--crimson);
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .disclaimer-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: rgba(255, 42, 85, 0.06);
+    border: 1px solid rgba(255, 42, 85, 0.2);
+    border-radius: 14px;
+  }
+
+  .disclaimer-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  .disclaimer-box p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .disclaimer-box strong {
+    color: var(--text-primary);
+  }
+
+  /* Gallery Styling */
+  .gallery-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .gallery-preview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .gallery-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.25s ease;
+  }
+
+  .gallery-card:hover, .gallery-card.active {
+    background: var(--bg-card-hover);
+    border-color: var(--border);
+    transform: scale(1.02);
+  }
+
+  .gallery-card.active {
+    box-shadow: 0 0 15px rgba(255, 42, 85, 0.3);
+  }
+
+  .gal-img-frame {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .gal-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gal-info h4 {
+    font-family: var(--font-title);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .gal-info p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .katarina-focus-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .focus-frame {
+    position: relative;
+    height: 440px;
+  }
+
+  .focus-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .focus-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #07090e 25%, transparent 70%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+  }
+
+  .focus-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--crimson);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  .focus-overlay h3 {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .focus-quote {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 800px) {
+    .gallery-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .gallery-preview-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
