@@ -1,22 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import caDataRaw from "../data/final_data.json";
-
-interface CAData {
-    wiki_ca_id: number;
-    name: string;
-    tier: string;
-    pts: number;
-    monster: string;
-    type: string;
-    description: string;
-    comp: number;
-    custom_score: number;
-    price: number;
-    requirements?: { [key: string]: any };
-}
-
-const caData = caDataRaw as CAData[];
 ---
 
 <Layout
@@ -45,10 +28,28 @@ const caData = caDataRaw as CAData[];
 </Layout>
 
 <script>
+    import caDataRaw from "../data/final_data.json";
+
+    interface CAData {
+        wiki_ca_id: number;
+        name: string;
+        tier: string;
+        pts: number;
+        monster: string;
+        type: string;
+        description: string;
+        comp: number;
+        custom_score: number;
+        price: number;
+        requirements?: { [key: string]: any };
+    }
+
     interface WikiData {
         username?: string;
         combat_achievements?: number[];
     }
+
+    const caData = caDataRaw as CAData[];
 
     const TiersCA = Object.freeze({
         EASY: 41,
@@ -97,7 +98,7 @@ const caData = caDataRaw as CAData[];
             const completedAchievements = data.combat_achievements ?? [];
 
             let completed = 0;
-            const incomplete: typeof caData = [];
+            const incomplete: CAData[] = [];
 
             for (const ca of caData) {
                 if (completedAchievements.includes(ca.wiki_ca_id)) {
@@ -109,7 +110,7 @@ const caData = caDataRaw as CAData[];
 
             let targetTier = TiersCA.MASTER;
             let ptsNeeded = targetTier;
-            const tasksToComplete: typeof caData = [];
+            const tasksToComplete: CAData[] = [];
             let totalPrice = 0;
 
             incomplete.sort((a, b) => a.custom_score - b.custom_score);
