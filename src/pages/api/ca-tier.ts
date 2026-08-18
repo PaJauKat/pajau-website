@@ -1,16 +1,16 @@
-export async function GET({ url }: { url: URL }) {
+export const prerender = false;
+
+export async function GET({ url }: any) {
+  
+
   const rsn = url.searchParams.get("username")?.trim();
-  console.log(`url=${url}`)
-  console.log("Meowname:", JSON.stringify(rsn));
+  console.log("finalRsn=", rsn);
 
   if (!rsn) {
-    return new Response(
-      JSON.stringify({ error: "Missing username parameter." }),
-      {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    return new Response(JSON.stringify({ error: "Missing username parameter." }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
   const endpoint = `https://sync.runescape.wiki/runelite/player/${encodeURIComponent(rsn)}/STANDARD`;
@@ -25,9 +25,7 @@ export async function GET({ url }: { url: URL }) {
 
     if (!response.ok) {
       return new Response(
-        JSON.stringify({
-          error: `RuneLite API returned status ${response.status}.`,
-        }),
+        JSON.stringify({ error: `RuneLite API returned status ${response.status}.` }),
         {
           status: 502,
           headers: { "Content-Type": "application/json" },
@@ -43,9 +41,7 @@ export async function GET({ url }: { url: URL }) {
     });
   } catch (error) {
     return new Response(
-      JSON.stringify({
-        error: error instanceof Error ? error.message : "Unknown error.",
-      }),
+      JSON.stringify({ error: error instanceof Error ? error.message : "Unknown error." }),
       {
         status: 500,
         headers: { "Content-Type": "application/json" },
