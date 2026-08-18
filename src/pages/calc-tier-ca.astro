@@ -1,0 +1,149 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+    title="Calculate Tier CA"
+    description="Calculate your Tier CA based on your inputs."
+>
+    <h1>Calculate Tier CA</h1>
+    <p>Use this tool to calculate your Tier CA based on your inputs.</p>
+    <!-- Add your calculation form or logic here -->
+    <input id="rsn-input" type="text" placeholder="Username..." />
+    <button>Calculate</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Tier</th>
+                <th>CA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add your calculation results here -->
+        </tbody>
+    </table>
+</Layout>
+
+<script>
+    interface WikiData {
+        username: string;
+        combat_achievements: Array<number>;
+    }
+
+    interface CAData {
+        wiki_ca_id: number;
+        name: string;
+        tier: string;
+        pts: number;
+        monster: string;
+        type: string;
+        description: string;
+        comp: number;
+        custom_score: number;
+        price: number;
+        requirements?: { [key: string]: any };
+    }
+
+    const TiersCA = Object.freeze({
+        EASY: 41,
+        MEDIUM: 161,
+        HARD: 419,
+        ELITE: 1075,
+        MASTER: 1945,
+        GRANDMASTER: 2671
+    });
+
+    const btn = document.querySelector("button") as HTMLButtonElement;
+    const input = document.getElementById("rsn-input") as HTMLInputElement;
+    const tbody = document.querySelector("tbody") as HTMLTableSectionElement;
+
+    btn?.addEventListener("click", async () => {
+        const rsn = input.value.trim();
+        console.log("username:", JSON.stringify(rsn));
+
+        if (!rsn) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="3">Please enter a username.</td>
+                </tr>
+            `;
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Calculating...";
+        tbody.innerHTML = "";
+
+        try {
+            const resp = await fetch(`/api/ca-tier?username=${encodeURIComponent(rsn)}`);
+
+            if (!resp.ok) {
+                const errorData = await resp.json().catch(() => ({}));
+                throw new Error(errorData.error || `Request failed with status ${resp.status}`);
+            }
+
+            const data = (await resp.json()) as WikiData;
+            const caResponse = await fetch("/data/final_data.json");
+            const caData = (await caResponse.json()) as CAData[];
+
+            let completed = 0;
+            const incomplete: CAData[] = [];
+
+            for (const ca of caData) {
+                if (data.combat_achievements.includes(ca.wiki_ca_id)) {
+                    completed += ca.pts;
+                } else {
+                    incomplete.push(ca);
+                }
+            }
+
+            let targetTier = TiersCA.MASTER;
+            let ptsNeeded = targetTier;
+            const tasksToComplete: CAData[] = [];
+            let totalPrice = 0;
+
+            incomplete.sort((a, b) => a.custom_score - b.custom_score);
+
+            for (const ca of incomplete) {
+                if (ptsNeeded <= 0) break;
+                ptsNeeded -= ca.pts;
+                tasksToComplete.push(ca);
+                totalPrice += ca.price;
+            }
+
+            tbody.innerHTML = "";
+
+            if (tasksToComplete.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="3">You already have enough CA points for the selected tier.</td>
+                    </tr>
+                `;
+            } else {
+                for (const ca of tasksToComplete) {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${ca.name}</td>
+                        <td>${ca.monster}</td>
+                        <td>${ca.pts}</td>
+                    `;
+                    tbody.appendChild(row);
+                }
+            }
+
+            console.log(`Completed CA points: ${completed}`);
+            console.log(`Missing points for Master: ${Math.max(0, ptsNeeded)}`);
+            console.log(`Total price of tasks: ${totalPrice}`);
+        } catch (error) {
+            console.error("Error en la petición fetch:", error);
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="3">${error instanceof Error ? error.message : "Something went wrong."}</td>
+                </tr>
+            `;
+        } finally {
+            btn.disabled = false;
+            btn.textContent = "Calculate";
+        }
+    });
+</script>
