@@ -82,8 +82,9 @@ import Layout from "../layouts/Layout.astro";
                 throw new Error(errorData.error || `Request failed with status ${resp.status}`);
             }
 
+            console.log("Respuesta obtenida")
             const data = (await resp.json()) as WikiData;
-            const caResponse = await fetch("/data/final_data.json");
+            const caResponse = await fetch("data/final_data.json");
             const caData = (await caResponse.json()) as CAData[];
 
             let completed = 0;
