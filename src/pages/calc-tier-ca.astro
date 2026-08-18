@@ -1,5 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import caDataRaw from "../data/final_data.json";
+
+interface CAData {
+    wiki_ca_id: number;
+    name: string;
+    tier: string;
+    pts: number;
+    monster: string;
+    type: string;
+    description: string;
+    comp: number;
+    custom_score: number;
+    price: number;
+    requirements?: { [key: string]: any };
+}
+
+const caData = caDataRaw as CAData[];
 ---
 
 <Layout
@@ -8,9 +25,12 @@ import Layout from "../layouts/Layout.astro";
 >
     <h1>Calculate Tier CA</h1>
     <p>Use this tool to calculate your Tier CA based on your inputs.</p>
-    <!-- Add your calculation form or logic here -->
-    <input id="rsn-input" type="text" placeholder="Username..." />
-    <button>Calculate</button>
+
+    <form id="calc-form">
+        <input id="rsn-input" name="username" type="text" placeholder="Username..." />
+        <button type="submit">Calculate</button>
+    </form>
+
     <table>
         <thead>
             <tr>
@@ -26,22 +46,8 @@ import Layout from "../layouts/Layout.astro";
 
 <script>
     interface WikiData {
-        username: string;
-        combat_achievements: Array<number>;
-    }
-
-    interface CAData {
-        wiki_ca_id: number;
-        name: string;
-        tier: string;
-        pts: number;
-        monster: string;
-        type: string;
-        description: string;
-        comp: number;
-        custom_score: number;
-        price: number;
-        requirements?: { [key: string]: any };
+        username?: string;
+        combat_achievements?: number[];
     }
 
     const TiersCA = Object.freeze({
@@ -50,16 +56,20 @@ import Layout from "../layouts/Layout.astro";
         HARD: 419,
         ELITE: 1075,
         MASTER: 1945,
-        GRANDMASTER: 2671
+        GRANDMASTER: 2671,
     });
 
-    const btn = document.querySelector("button") as HTMLButtonElement;
-    const input = document.getElementById("rsn-input") as HTMLInputElement;
-    const tbody = document.querySelector("tbody") as HTMLTableSectionElement;
+    const form = document.getElementById("calc-form") as HTMLFormElement | null;
+    const btn = document.querySelector("button[type='submit']") as HTMLButtonElement | null;
+    const input = document.getElementById("rsn-input") as HTMLInputElement | null;
+    const tbody = document.querySelector("tbody") as HTMLTableSectionElement | null;
 
-    btn?.addEventListener("click", async () => {
-        const rsn = input.value.trim();
-        console.log("username:", JSON.stringify(rsn));
+    form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const rsn = input?.value.trim() ?? "";
+
+        if (!tbody) return;
 
         if (!rsn) {
             tbody.innerHTML = `
@@ -70,28 +80,27 @@ import Layout from "../layouts/Layout.astro";
             return;
         }
 
-        btn.disabled = true;
-        btn.textContent = "Calculating...";
+        btn && (btn.disabled = true);
+        btn && (btn.textContent = "Calculating...");
         tbody.innerHTML = "";
 
         try {
-            const resp = await fetch(`/api/ca-tier?username=${encodeURIComponent(rsn)}`);
+            const params = new URLSearchParams({ username: rsn });
+            const resp = await fetch(`/api/ca-tier?${params.toString()}`);
 
             if (!resp.ok) {
                 const errorData = await resp.json().catch(() => ({}));
                 throw new Error(errorData.error || `Request failed with status ${resp.status}`);
             }
 
-            console.log("Respuesta obtenida")
             const data = (await resp.json()) as WikiData;
-            const caResponse = await fetch("data/final_data.json");
-            const caData = (await caResponse.json()) as CAData[];
+            const completedAchievements = data.combat_achievements ?? [];
 
             let completed = 0;
-            const incomplete: CAData[] = [];
+            const incomplete: typeof caData = [];
 
             for (const ca of caData) {
-                if (data.combat_achievements.includes(ca.wiki_ca_id)) {
+                if (completedAchievements.includes(ca.wiki_ca_id)) {
                     completed += ca.pts;
                 } else {
                     incomplete.push(ca);
@@ -100,7 +109,7 @@ import Layout from "../layouts/Layout.astro";
 
             let targetTier = TiersCA.MASTER;
             let ptsNeeded = targetTier;
-            const tasksToComplete: CAData[] = [];
+            const tasksToComplete: typeof caData = [];
             let totalPrice = 0;
 
             incomplete.sort((a, b) => a.custom_score - b.custom_score);
@@ -143,8 +152,8 @@ import Layout from "../layouts/Layout.astro";
                 </tr>
             `;
         } finally {
-            btn.disabled = false;
-            btn.textContent = "Calculate";
+            btn && (btn.disabled = false);
+            btn && (btn.textContent = "Calculate");
         }
     });
 </script>
