@@ -17,8 +17,11 @@ import Layout from "../layouts/Layout.astro";
     <table>
         <thead>
             <tr>
-                <th>Tier</th>
-                <th>CA</th>
+                <th>Task Name</th>
+                <th>Boss</th>
+                <th>Points</th>
+                <th>Description</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
@@ -107,13 +110,16 @@ import Layout from "../layouts/Layout.astro";
                     incomplete.push(ca);
                 }
             }
+            console.log("Completed=", completedAchievements.length)
+            console.log("Incompleted=", incomplete.length)
 
             let targetTier = TiersCA.MASTER;
-            let ptsNeeded = targetTier;
+            let ptsNeeded = targetTier - completed;
+            console.log("PTs needed=", ptsNeeded)
             const tasksToComplete: CAData[] = [];
             let totalPrice = 0;
 
-            incomplete.sort((a, b) => a.custom_score - b.custom_score);
+            incomplete.sort((a, b) => b.custom_score - a.custom_score);
 
             for (const ca of incomplete) {
                 if (ptsNeeded <= 0) break;
@@ -137,6 +143,8 @@ import Layout from "../layouts/Layout.astro";
                         <td>${ca.name}</td>
                         <td>${ca.monster}</td>
                         <td>${ca.pts}</td>
+                        <td>${ca.description}</td>
+                        <td>${ca.price}</td>
                     `;
                     tbody.appendChild(row);
                 }
