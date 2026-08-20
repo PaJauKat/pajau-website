@@ -6894,8 +6894,8 @@
     },
     {
         "name": "Maggot King Speed Chaser",
-        "tier": "Master",
-        "pts": 5,
+        "tier": "Grandmaster",
+        "pts": 6,
         "monster": "Maggot King",
         "type": "Speed",
         "description": "Kill the Maggot King 5 times in 9 minutes.",
