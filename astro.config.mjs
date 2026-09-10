@@ -12,5 +12,9 @@ export default defineConfig({
       '/download-kathub': 'https://github.com/PaJauKat/kathub-go/releases/latest/download/KatHub_Setup.exe'
   },
 
-  adapter: vercel()
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  })
 });
