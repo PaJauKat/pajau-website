@@ -109,7 +109,7 @@ const projects2 = [
     link: '/plugins',
     isExternal: false,
     featured: true,
-    badge: 'Hobby'
+    badge: 'Personal'
   },
   {
     title: 'GitHub Repositories',
@@ -160,9 +160,70 @@ const skillCategories = [
     items: ['Git', 'Supabase', 'SQL', "MongoDB", 'RabbitMQ']
   }
 ];
+
+const interests: { icon?: string; iconImg?: string; title: string; tag: string; points: string[] }[] = [
+  {
+    iconImg: '/interest_icons/osrs.png',
+    title: 'Gaming',
+    tag: 'LoL + OSRS',
+    points: [
+      'LoL: main Katarina, con Caitlyn y Tristana de respaldo. Atrapado en Esmeralda.',
+      'OSRS me tiene secuestrado: siempre está abierto mientras hago cualquier otra cosa.',
+      'Ironman maxed con Gilded Collection Log y Zuk Helm (todos los Combat Achievements).',
+      'HCIM que sigue con vida (ya no maxed porque salió Sailing ), un UIM casi maxed y 2 normies maxed con Zuk Helm.'
+    ]
+  },
+  {
+    icon: '⚙️',
+    title: 'Ciencia & Ingeniería',
+    tag: 'Automatizar todo',
+    points: [
+      'Me gustan la física, la química, la matemática y la electrónica.',
+      'Mi pasatiempo: combinarlas con código para automatizar cosas.',
+      '5 años en Ingeniería Civil Electrónica.'
+    ]
+  },
+  {
+    icon: '🥋',
+    title: 'Deporte',
+    tag: 'Del tatami al tricking',
+    points: [
+      '11 años de Taekwondo hasta cinta roja. Nunca me gustó el combate, prefería las acrobacias.',
+      'Pasé por gimnasia artística y terminé en tricking, que es más libre.',
+      'Retirado con honores... es decir, ya no hago nada.'
+    ]
+  },
+  {
+    iconImg: '/interest_icons/katkitty.webp',
+    title: 'Anime & Doramas',
+    tag: 'Romántico de corazón',
+    points: [
+      'He visto más anime que la mierda, los que mas me gustan son los románticos.',
+      'También veo doramas: hay algunos buenísimos.'
+    ]
+  },
+  {
+    iconImg: '/interest_icons/lenguaje.png',
+    title: 'Idiomas',
+    tag: 'Español + caos',
+    points: [
+      'Español (chileno) nativo.',
+      'Inglés: leo y escucho decentemente, hablado cero.',
+      'Intenté japonés: aprendí katakana, hiragana y unos kanjis... y me rendí, porque eran muchas weas.'
+    ]
+  },
+  {
+    icon: '🎧',
+    title: 'Música',
+    tag: 'De todo',
+    points: [
+      'Desde música clásica, blues hasta metal deathcore ultra satánico. Todo vale.'
+    ]
+  }
+];
 ---
 
-<Layout title="Pajau | Proyectos & Software por Hobby" description="Sitio personal de Pajau (@PaJauKat): proyectos de software por hobby, herramientas y rincón fan de Katarina.">
+<Layout title="Pajau | Proyectos & Software Personales" description="Sitio personal de Pajau (@PaJauKat): proyectos personales de software, herramientas y rincón fan de Katarina.">
   <div class="page-container">
     
     <!-- Top Navigation -->
@@ -171,7 +232,7 @@ const skillCategories = [
         <img src="/logo.png" alt="Pajau Logo" class="brand-img" />
         <div class="brand-text">
           <span class="brand-name">PAJAU<span class="dot">.</span></span>
-          <span class="brand-sub">HOBBY DEV</span>
+          <span class="brand-sub">KAT</span>
         </div>
       </a>
 
@@ -179,6 +240,7 @@ const skillCategories = [
         <a href="#proyectos">Proyectos</a>
         <a href="/katarina">Katarina Corner</a>
         <a href="#sobre-mi">Sobre mí</a>
+        <a href="#intereses">Intereses</a>
       </nav>
 
       <div class="nav-actions">
@@ -196,16 +258,16 @@ const skillCategories = [
       <div class="hero-content">
         <div class="hero-badge">
           <span class="pulse-dot"></span>
-          <span>Programando por Hobby & Diversión</span>
+          <span>Vivo y coleando</span>
         </div>
 
         <h1 class="hero-title">
-          Haciendo código por hobby, <br />
+          Proyectos personales, <br />
           <span class="highlight">sin pretensiones.</span>
         </h1>
 
         <p class="hero-description">
-          Soy <strong class="text-white">Pajau</strong> (@PaJauKat). No soy un experto en diseño ni desarrollador; solo un aficionado que programa en su tiempo libre, haciendo utilidades, plugins y proyectos sencillos por puro interés personal.
+          Soy <strong class="text-white">Pajau</strong> (@PaJauKat). No soy un desarrollador profesional; programo por puro interés personal, creando utilidades, plugins y proyectos sencillos en mi tiempo libre.
         </p>
 
         <div class="hero-tags">
@@ -223,7 +285,7 @@ const skillCategories = [
           </div>
           <div class="tag-chip">
             <span class="tag-icon">💻</span>
-            <span>Proyectos por Hobby</span>
+            <span>Proyectos Personales</span>
           </div>
         </div>
 
@@ -331,8 +393,8 @@ const skillCategories = [
       <div class="about-grid">
         <div class="about-card main-bio">
           <div class="header-badge">SOBRE MÍ</div>
-          <h2>Programación por puro hobby</h2>
-          <p>Me enfoco en el desarrollo de herramientas, automatización de tareas y creación de plugins personalizados. Cuento con una sólida base en matemática, física y lógica de sistemas tras 5 años en Ingeniería Civil Electrónica, aplicando ese enfoque analítico para entender cómo funcionan las cosas por dentro y resolver problemas mediante código.</p>
+          <h2>Hola, soy Pajau 👋</h2>
+          <p>Programo por puro interés personal: herramientas, automatización y plugins para juegos. Mi base viene de 5 años en Ingeniería Civil Electrónica, con su matemática, física y lógica de sistemas. Pero no soy solo código: el otro 50% de mi tiempo está secuestrado por OSRS, arrastro un pasado de Taekwondo y tengo una playlist que va del jazz al deathcore.</p>
           
           <div class="bio-stats">
             <div class="stat-item">
@@ -340,12 +402,16 @@ const skillCategories = [
               <span class="stat-label">Alias</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">GitHub</span>
-              <span class="stat-label">@PaJauKat</span>
+              <span class="stat-number">@PaJauKat</span>
+              <span class="stat-label">GitHub</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">Hobby</span>
-              <span class="stat-label">Software & Games</span>
+              <span class="stat-number">Esmeralda</span>
+              <span class="stat-label">Rango LoL</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">11 años</span>
+              <span class="stat-label">Taekwondo</span>
             </div>
           </div>
         </div>
@@ -383,6 +449,34 @@ const skillCategories = [
       </div>
 
       <!-- Discord banner removed -->
+    </section>
+
+    <!-- Interests: Beyond Code Section -->
+    <section id="intereses" class="section interests-section">
+      <div class="section-header">
+        <div class="header-badge">MÁS ALLÁ DEL CÓDIGO</div>
+        <h2 class="section-title">No soy solo código <span class="highlight-red">✨</span></h2>
+        <p class="section-sub">Ingeniería, rankeds stuckeados, acrobacias retiradas y música rara de fondo.</p>
+      </div>
+
+      <div class="interests-grid">
+        {interests.map((it) => (
+          <article class="interest-card">
+            <div class="interest-top">
+              <div class="interest-icon">
+              {it.iconImg ? <img src={it.iconImg} alt={it.title} /> : it.icon}
+            </div>
+              <span class="card-tag">{it.tag}</span>
+            </div>
+            <h3 class="interest-title">{it.title}</h3>
+            <ul class="interest-points">
+              {it.points.map((p) => (
+                <li>{p}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
     </section>
 
     <!-- Footer -->
@@ -1008,6 +1102,7 @@ const skillCategories = [
 
   .bio-stats {
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
     border-top: 1px solid var(--border-subtle);
     padding-top: 20px;
@@ -1141,6 +1236,87 @@ const skillCategories = [
   .skill-level {
     font-size: 0.72rem;
     color: var(--text-muted);
+  }
+
+  /* Interests Section */
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .interest-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .interest-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .interest-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .interest-icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    background: rgba(255, 42, 85, 0.1);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+
+  .interest-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .interest-title {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+  }
+
+  .interest-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .interest-points li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .interest-points li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--crimson);
   }
 
   /* Discord Banner */
