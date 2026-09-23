@@ -3,14 +3,14 @@ import Layout from '../layouts/Layout.astro';
 
 const projects = [
   {
-    title: 'CA Tier Calculator',
-    subtitle: 'KatServices',
-    description: 'Herramienta web sencilla para analizar y calcular progresos de Combat Achievements en OSRS.',
+    title: 'KatServices',
+    subtitle: 'OSRS Services',
+    description: 'Servicios y herramientas para OSRS: Combat Achievements, ítems BiS y más.',
     tag: 'OSRS',
     badge: 'Web',
     tech: ['Astro', 'TypeScript'],
-    link: '/ca-tier-calculator',
-    isExternal: false,
+    link: 'https://services.pajau.cl',
+    isExternal: true,
     featured: true,
     public: true
   },
@@ -90,17 +90,6 @@ const projects = [
 
 const projects2 = [
   {
-    title: 'Calculadora CA',
-    subtitle: 'Combat Achievements Tool',
-    description: 'Herramienta web sencilla para analizar y calcular progresos de Combat Achievements en OSRS.',
-    tag: 'Herramienta OSRS',
-    tech: ['Astro', 'TypeScript'],
-    link: '/ca-tier-calculator',
-    isExternal: false,
-    featured: true,
-    badge: 'Herramienta'
-  },
-  {
     title: 'Plugins de RuneLite',
     subtitle: 'RuneLite / OSRS Mods',
     description: 'Plugins y pequeños módulos en Java para personalizar la interfaz y utilidades en RuneLite.',
@@ -161,66 +150,6 @@ const skillCategories = [
   }
 ];
 
-const interests: { icon?: string; iconImg?: string; title: string; tag: string; points: string[] }[] = [
-  {
-    iconImg: '/interest_icons/osrs.png',
-    title: 'Gaming',
-    tag: 'LoL + OSRS',
-    points: [
-      'LoL: main Katarina, con Caitlyn y Tristana de respaldo. Atrapado en Esmeralda.',
-      'OSRS me tiene secuestrado: siempre está abierto mientras hago cualquier otra cosa.',
-      'Ironman maxed con Gilded Collection Log y Zuk Helm (todos los Combat Achievements).',
-      'HCIM que sigue con vida (ya no maxed porque salió Sailing ), un UIM casi maxed y 2 normies maxed con Zuk Helm.'
-    ]
-  },
-  {
-    icon: '⚙️',
-    title: 'Ciencia & Ingeniería',
-    tag: 'Automatizar todo',
-    points: [
-      'Me gustan la física, la química, la matemática y la electrónica.',
-      'Mi pasatiempo: combinarlas con código para automatizar cosas.',
-      '5 años en Ingeniería Civil Electrónica.'
-    ]
-  },
-  {
-    icon: '🥋',
-    title: 'Deporte',
-    tag: 'Del tatami al tricking',
-    points: [
-      '11 años de Taekwondo hasta cinta roja. Nunca me gustó el combate, prefería las acrobacias.',
-      'Pasé por gimnasia artística y terminé en tricking, que es más libre.',
-      'Retirado con honores... es decir, ya no hago nada.'
-    ]
-  },
-  {
-    iconImg: '/interest_icons/katkitty.webp',
-    title: 'Anime & Doramas',
-    tag: 'Romántico de corazón',
-    points: [
-      'He visto más anime que la mierda, los que mas me gustan son los románticos.',
-      'También veo doramas: hay algunos buenísimos.'
-    ]
-  },
-  {
-    iconImg: '/interest_icons/lenguaje.png',
-    title: 'Idiomas',
-    tag: 'Español + caos',
-    points: [
-      'Español (chileno) nativo.',
-      'Inglés: leo y escucho decentemente, hablado cero.',
-      'Intenté japonés: aprendí katakana, hiragana y unos kanjis... y me rendí, porque eran muchas weas.'
-    ]
-  },
-  {
-    icon: '🎧',
-    title: 'Música',
-    tag: 'De todo',
-    points: [
-      'Desde música clásica, blues hasta metal deathcore ultra satánico. Todo vale.'
-    ]
-  }
-];
 ---
 
 <Layout title="Pajau | Proyectos & Software Personales" description="Sitio personal de Pajau (@PaJauKat): proyectos personales de software, herramientas y rincón fan de Katarina.">
@@ -238,9 +167,8 @@ const interests: { icon?: string; iconImg?: string; title: string; tag: string; 
 
       <nav class="nav-links">
         <a href="#proyectos">Proyectos</a>
-        <a href="/katarina">Katarina Corner</a>
+        <a href="https://services.pajau.cl" target="_blank" rel="noopener noreferrer">KatServices</a>
         <a href="#sobre-mi">Sobre mí</a>
-        <a href="#intereses">Intereses</a>
       </nav>
 
       <div class="nav-actions">
@@ -405,14 +333,10 @@ const interests: { icon?: string; iconImg?: string; title: string; tag: string; 
               <span class="stat-number">@PaJauKat</span>
               <span class="stat-label">GitHub</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">Esmeralda</span>
-              <span class="stat-label">Rango LoL</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">11 años</span>
-              <span class="stat-label">Taekwondo</span>
-            </div>
+            <a href="/intereses" class="btn btn-primary">
+              <span>Conocer más</span>
+              <span class="btn-arrow">→</span>
+            </a>
           </div>
         </div>
 
@@ -451,34 +375,6 @@ const interests: { icon?: string; iconImg?: string; title: string; tag: string; 
       <!-- Discord banner removed -->
     </section>
 
-    <!-- Interests: Beyond Code Section -->
-    <section id="intereses" class="section interests-section">
-      <div class="section-header">
-        <div class="header-badge">MÁS ALLÁ DEL CÓDIGO</div>
-        <h2 class="section-title">No soy solo código <span class="highlight-red">✨</span></h2>
-        <p class="section-sub">Ingeniería, rankeds stuckeados, acrobacias retiradas y música rara de fondo.</p>
-      </div>
-
-      <div class="interests-grid">
-        {interests.map((it) => (
-          <article class="interest-card">
-            <div class="interest-top">
-              <div class="interest-icon">
-              {it.iconImg ? <img src={it.iconImg} alt={it.title} /> : it.icon}
-            </div>
-              <span class="card-tag">{it.tag}</span>
-            </div>
-            <h3 class="interest-title">{it.title}</h3>
-            <ul class="interest-points">
-              {it.points.map((p) => (
-                <li>{p}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
       <div class="footer-inner">
@@ -493,7 +389,7 @@ const interests: { icon?: string; iconImg?: string; title: string; tag: string; 
 
         <div class="footer-links">
           <a href="https://github.com/PaJauKat" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="/ca-tier-calculator">Calculadora CA</a>
+          <a href="https://services.pajau.cl" target="_blank" rel="noopener noreferrer">KatServices</a>
           <a href="/plugins">Plugins</a>
           <a href="/katarina">Katarina Corner</a>
         </div>
@@ -1103,6 +999,7 @@ const interests: { icon?: string; iconImg?: string; title: string; tag: string; 
   .bio-stats {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 30px;
     border-top: 1px solid var(--border-subtle);
     padding-top: 20px;
@@ -1236,87 +1133,6 @@ const interests: { icon?: string; iconImg?: string; title: string; tag: string; 
   .skill-level {
     font-size: 0.72rem;
     color: var(--text-muted);
-  }
-
-  /* Interests Section */
-  .interests-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-  }
-
-  .interest-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 20px;
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-  }
-
-  .interest-card:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--border);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-  }
-
-  .interest-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 18px;
-  }
-
-  .interest-icon {
-    width: 46px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    background: rgba(255, 42, 85, 0.1);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-  }
-
-  .interest-icon img {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
-    border-radius: 6px;
-  }
-
-  .interest-title {
-    font-family: var(--font-title);
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 14px;
-  }
-
-  .interest-points {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .interest-points li {
-    position: relative;
-    padding-left: 18px;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  .interest-points li::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--crimson);
   }
 
   /* Discord Banner */

@@ -1,0 +1,233 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const interests: { icon?: string; iconImg?: string; title: string; tag: string; points: string[] }[] = [
+  {
+    iconImg: '/interest_icons/osrs.png',
+    title: 'Gaming',
+    tag: 'LoL + OSRS',
+    points: [
+      'LoL: main Katarina, con Caitlyn y Tristana de respaldo. Atrapado en Esmeralda.',
+      'OSRS me tiene secuestrado: siempre está abierto mientras hago cualquier otra cosa.',
+      'Ironman maxed con Gilded Collection Log y Zuk Helm (todos los Combat Achievements).',
+      'HCIM que sigue con vida (ya no maxed porque salió Sailing ), un UIM casi maxed y 2 normies maxed con Zuk Helm.'
+    ]
+  },
+  {
+    icon: '⚙️',
+    title: 'Ciencia & Ingeniería',
+    tag: 'Automatizar todo',
+    points: [
+      'Me gustan la física, la química, la matemática y la electrónica.',
+      'Mi pasatiempo: combinarlas con código para automatizar cosas.',
+      '5 años en Ingeniería Civil Electrónica.'
+    ]
+  },
+  {
+    icon: '🥋',
+    title: 'Deporte',
+    tag: 'Del tatami al tricking',
+    points: [
+      '11 años de Taekwondo hasta cinta roja. Nunca me gustó el combate, prefería las acrobacias.',
+      'Pasé por gimnasia artística y terminé en tricking, que es más libre.',
+      'Retirado con honores... es decir, ya no hago nada.'
+    ]
+  },
+  {
+    iconImg: '/interest_icons/katkitty.webp',
+    title: 'Anime & Doramas',
+    tag: 'Romántico de corazón',
+    points: [
+      'He visto más anime que la mierda, los que mas me gustan son los románticos.',
+      'También veo doramas: hay algunos buenísimos.'
+    ]
+  },
+  {
+    iconImg: '/interest_icons/lenguaje.png',
+    title: 'Idiomas',
+    tag: 'Español + caos',
+    points: [
+      'Español (chileno) nativo.',
+      'Inglés: leo y escucho decentemente, hablado cero.',
+      'Intenté japonés: aprendí katakana, hiragana y unos kanjis... y me rendí, porque eran muchas weas.'
+    ]
+  },
+  {
+    icon: '🎧',
+    title: 'Música',
+    tag: 'De todo',
+    points: [
+      'Desde música clásica, blues hasta metal deathcore ultra satánico. Todo vale.'
+    ]
+  }
+];
+---
+
+<Layout title="Intereses - Pajau | Más allá del código" description="Más allá del código: gaming, ingeniería, deporte, anime, idiomas y música de Pajau (@PaJauKat).">
+  <div class="subpage-container">
+    <header class="subpage-header">
+      <a href="/" class="back-link">← Volver al Inicio</a>
+      <div class="header-badge">MÁS ALLÁ DEL CÓDIGO</div>
+      <h1>No soy solo código ✨</h1>
+      <p>Ingeniería, rankeds stuckeados, acrobacias retiradas y música rara de fondo.</p>
+    </header>
+
+    <main class="subpage-content">
+      <div class="interests-grid">
+        {interests.map((it) => (
+          <article class="interest-card">
+            <div class="interest-top">
+              <div class="interest-icon">
+                {it.iconImg ? <img src={it.iconImg} alt={it.title} /> : it.icon}
+              </div>
+              <span class="card-tag">{it.tag}</span>
+            </div>
+            <h3 class="interest-title">{it.title}</h3>
+            <ul class="interest-points">
+              {it.points.map((p) => (
+                <li>{p}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .subpage-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .subpage-header {
+    margin-bottom: 40px;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--crimson);
+  }
+
+  .header-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--crimson);
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .interest-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .interest-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .interest-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .interest-icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    background: rgba(255, 42, 85, 0.1);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+
+  .interest-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .card-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .interest-title {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+  }
+
+  .interest-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .interest-points li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .interest-points li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--crimson);
+  }
+</style>
