@@ -14,5 +14,9 @@ export default defineConfig({
       '/services': 'https://services.pajau.cl'
   },
 
-  adapter: vercel()
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  })
 });
