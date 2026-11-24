@@ -1,0 +1,357 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const features = [
+  {
+    icon: '🔐',
+    title: 'Bóveda cifrada',
+    text: 'Tus credenciales se guardan cifradas con AES-256-GCM y una clave derivada con Argon2id. Nada se envía a ningún servidor.'
+  },
+  {
+    icon: '🔄',
+    title: 'Cambia de cuenta al instante',
+    text: 'Guarda la credencial activa de RuneLite y vuelve a usarla con un clic. La cuenta anterior se respalda automáticamente.'
+  },
+  {
+    icon: '📥',
+    title: 'Importación manual',
+    text: 'Pega el contenido de un credentials.properties de otro equipo y asígnale un nombre. Se cifra antes de escribirse en disco.'
+  },
+  {
+    icon: '⚡',
+    title: 'Inicio automático',
+    text: 'La contraseña se guarda protegida por tu cuenta de Windows (DPAPI), así que la app se abre sin pedirla cada vez. Puedes desactivarlo.'
+  },
+  {
+    icon: '📜',
+    title: 'Registro de actividad',
+    text: 'Consulta las acciones sensibles recientes: altas, borrados, desbloqueos y cambios de contraseña. Nunca se registran secretos.'
+  },
+  {
+    icon: '🧹',
+    title: 'Empezar de cero',
+    text: 'Si olvidaste la contraseña maestra, reinicia la bóveda con confirmación. El archivo de RuneLite no se toca.'
+  }
+];
+
+const shots = [
+  { src: '/kataccountmanager/principal.png', alt: 'Lista de cuentas cifradas en Kat Account Manager', title: 'Gestión de cuentas' },
+  { src: '/kataccountmanager/configuracion.png', alt: 'Pantalla de creación de la bóveda', title: 'Creación de bóveda' },
+  { src: '/kataccountmanager/importacion.png', alt: 'Importación manual de credenciales', title: 'Importación manual' },
+  { src: '/kataccountmanager/actividad.png', alt: 'Registro de actividad de la aplicación', title: 'Registro de actividad' }
+];
+---
+
+<Layout
+  title="Kat Account Manager - Descarga | Pajau"
+  description="Gestor cifrado de credenciales de RuneLite para Windows. Múltiples cuentas, AES-256-GCM, Argon2id e inicio automático. Descarga gratuita."
+>
+  <div class="page">
+    <a href="/" class="back-link">← Volver al Inicio</a>
+
+    <header class="hero">
+      <div class="hero-main">
+        <div class="hero-icon-wrap">
+          <img src="/kataccountmanager/icon.png" alt="Icono de Kat Account Manager" class="hero-icon" />
+        </div>
+        <div class="hero-copy">
+          <div class="header-badge">HERRAMIENTAS · WINDOWS</div>
+          <h1>Kat Account Manager</h1>
+          <p class="lead">
+            Gestiona varias cuentas de RuneLite sin exponer tus credenciales. Una aplicación de escritorio nativa,
+            rápida y completamente offline: tus datos nunca salen de tu equipo.
+          </p>
+          <div class="pills">
+            <span class="pill">v1.1.0</span>
+            <span class="pill">Windows</span>
+            <span class="pill">Código abierto</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="/download-kataccountmanager" class="btn btn-download">
+          <span class="btn-icon">↓</span>
+          <span>
+            <strong>Descargar instalador</strong>
+            <small>MSI · sin administrador</small>
+          </span>
+        </a>
+        <a href="https://github.com/PaJauKat/KatAccountManager" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          Ver código en GitHub ↗
+        </a>
+      </div>
+    </header>
+
+    <section class="highlights" aria-label="Características principales">
+      <div class="highlight"><strong>100%</strong><span>Offline</span></div>
+      <div class="highlight"><strong>AES-256</strong><span>GCM</span></div>
+      <div class="highlight"><strong>Argon2id</strong><span>Derivación de clave</span></div>
+      <div class="highlight"><strong>Go</strong><span>Sin CGO ni navegador</span></div>
+    </section>
+
+    <main class="content">
+      <section class="section">
+        <h2>¿Qué es?</h2>
+        <p>
+          Kat Account Manager es un gestor de credenciales de Jagex para RuneLite. Guarda cada cuenta en una bóveda
+          cifrada y te permite escribirla en el archivo activo de RuneLite con un solo clic. Si RuneLite tiene una
+          credencial nueva, puedes guardarla en la bóveda sin perder las demás.
+        </p>
+        <p>
+          Está construida en Go con Gio: una ventana nativa, sin servidor local, sin peticiones innecesarias y sin
+          dependencias de navegador. El instalador es por usuario, no necesita permisos de administrador y fija la
+          ubicación en <code>%LOCALAPPDATA%\Kat Account Manager</code>.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Características</h2>
+        <div class="features">
+          {features.map((feature) => (
+            <article class="feature-card">
+              <div class="feature-icon">{feature.icon}</div>
+              <h3>{feature.title}</h3>
+              <p>{feature.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Capturas</h2>
+        <div class="shots">
+          {shots.map((shot) => (
+            <figure class="shot">
+              <img src={shot.src} alt={shot.alt} loading="lazy" />
+              <figcaption>{shot.title}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Seguridad</h2>
+        <div class="security-card">
+          <ul>
+            <li><span>✓</span> Cifrado AES-256-GCM con nonce aleatorio por cuenta.</li>
+            <li><span>✓</span> Clave derivada con Argon2id (64 MiB, 3 iteraciones) y sal aleatoria.</li>
+            <li><span>✓</span> Cada archivo cifrado está ligado a su identificador: moverlo rompe la autenticación.</li>
+            <li><span>✓</span> La clave se borra de memoria al bloquear o cerrar la aplicación.</li>
+            <li><span>✓</span> Límite de 5 intentos de desbloqueo por minuto con bloqueo temporal.</li>
+            <li><span>✓</span> Sin sockets ni servidor: la única salida es la comprobación opcional de actualizaciones.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div>
+          <h2>Listo para usar</h2>
+          <p>Descarga el instalador, abre la aplicación y crea tu contraseña maestra.</p>
+        </div>
+        <a href="/download-kataccountmanager" class="btn btn-download">
+          <span class="btn-icon">↓</span>
+          <span>
+            <strong>Descargar v1.1.0</strong>
+            <small>KatAccountManager_Setup.msi</small>
+          </span>
+        </a>
+      </section>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 40px 24px 90px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 28px;
+    transition: color 0.2s ease;
+  }
+  .back-link:hover { color: var(--crimson); }
+
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+  }
+  .hero-main { display: flex; align-items: center; gap: 24px; flex: 1 1 520px; }
+  .hero-icon-wrap {
+    flex: 0 0 auto;
+    padding: 10px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(255,42,85,0.18), rgba(255,42,85,0.02));
+    border: 1px solid var(--border-strong);
+    box-shadow: 0 10px 35px var(--crimson-glow);
+  }
+  .hero-icon { display: block; width: 96px; height: 96px; border-radius: 14px; }
+  .header-badge { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.15em; color: var(--crimson); margin-bottom: 6px; }
+  h1 { font-family: var(--font-title); font-size: 2.6rem; font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+  .lead { color: var(--text-secondary); font-size: 1.02rem; max-width: 640px; }
+  .pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .pill {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    padding: 5px 12px;
+  }
+
+  .hero-actions { display: flex; flex-direction: column; gap: 12px; min-width: 260px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 22px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-download {
+    background: linear-gradient(135deg, var(--crimson), var(--crimson-dark));
+    color: #fff;
+    border: 1px solid var(--crimson);
+    box-shadow: 0 10px 30px var(--crimson-glow);
+    text-align: left;
+  }
+  .btn-download:hover { box-shadow: 0 14px 38px var(--crimson-glow); }
+  .btn-download strong, .btn-download small { display: block; }
+  .btn-download strong { font-size: 1rem; }
+  .btn-download small { font-size: 0.72rem; font-weight: 500; opacity: 0.85; }
+  .btn-icon {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.16);
+    font-size: 1.2rem;
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--border-strong); }
+
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 22px;
+  }
+  .highlight {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 18px;
+    text-align: center;
+  }
+  .highlight strong { display: block; font-family: var(--font-title); font-size: 1.25rem; color: var(--crimson); }
+  .highlight span { font-size: 0.78rem; color: var(--text-secondary); }
+
+  .content { margin-top: 60px; }
+  .section { margin-bottom: 60px; }
+  .section h2, .cta h2 {
+    font-family: var(--font-title);
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+  .section p { color: var(--text-secondary); line-height: 1.75; margin-bottom: 12px; }
+  code {
+    font-family: ui-monospace, monospace;
+    font-size: 0.88em;
+    color: var(--text-primary);
+    background: rgba(255,255,255,0.06);
+    border-radius: 6px;
+    padding: 2px 6px;
+  }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 22px;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .feature-card:hover { transform: translateY(-3px); background: var(--bg-card-hover); border-color: var(--border-strong); }
+  .feature-icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .feature-card h3 { font-family: var(--font-title); font-size: 1.05rem; margin-bottom: 8px; }
+  .feature-card p { font-size: 0.88rem; line-height: 1.65; }
+
+  .shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .shot {
+    margin: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 12px;
+    overflow: hidden;
+  }
+  .shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+  }
+  .shot figcaption { padding: 12px 6px 4px; color: var(--text-secondary); font-size: 0.85rem; font-weight: 600; }
+
+  .security-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 26px 30px;
+  }
+  .security-card ul { list-style: none; }
+  .security-card li { color: var(--text-secondary); padding: 9px 0; line-height: 1.6; }
+  .security-card li span { color: var(--crimson); font-weight: 800; margin-right: 10px; }
+
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    background: linear-gradient(135deg, rgba(255,42,85,0.12), rgba(15,19,28,0.8));
+    border: 1px solid var(--border-strong);
+    border-radius: 22px;
+    padding: 30px;
+  }
+  .cta p { color: var(--text-secondary); }
+
+  @media (max-width: 820px) {
+    .hero { padding: 22px; }
+    h1 { font-size: 2rem; }
+    .hero-actions { width: 100%; }
+    .highlights { grid-template-columns: repeat(2, 1fr); }
+    .features { grid-template-columns: 1fr; }
+    .shots { grid-template-columns: 1fr; }
+  }
+</style>

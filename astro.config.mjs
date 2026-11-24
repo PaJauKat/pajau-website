@@ -10,6 +10,7 @@ export default defineConfig({
   redirects: {
       '/rch': 'https://discord.gg/rrhxskVWNg',
       '/download-kathub': 'https://github.com/PaJauKat/kathub-go/releases/latest/download/KatHub_Setup.exe',
+      '/download-kataccountmanager': 'https://bucket.pajau.cl/KatAccountManager_Setup.msi',
       '/ca-tier-calculator': 'https://services.pajau.cl',
       '/services': 'https://services.pajau.cl'
   },
